@@ -20,8 +20,8 @@ export function Hero() {
           {/* Announcement banner */}
           <Link href="#features" className="inline-flex items-center gap-2 mb-8 group">
             <Badge variant="secondary" className="px-4 py-2 text-sm font-medium border hover:bg-muted transition-colors">
-              <span className="mr-2">⚡</span>
-              Built on Brakto's Proven Infrastructure
+              <span className="mr-2">🚀</span>
+              Coming Soon - Built on Brakto's Proven Infrastructure
               <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
             </Badge>
           </Link>
@@ -36,19 +36,19 @@ export function Hero() {
 
           {/* Subtitle */}
           <p className="mx-auto mt-8 max-w-3xl text-pretty text-xl text-muted-foreground leading-relaxed">
-            The premier digital platform for academic competitions — serving debate competitions, academic bowls, 
+            An upcoming digital platform for academic competitions — designed to serve debate competitions, academic bowls, 
             olympiads, and knowledge competitions. Powered by Brakto's proven competition infrastructure.
           </p>
 
           {/* CTA buttons */}
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" className="gap-2 text-base px-8 py-6 font-semibold bg-accent text-accent-foreground hover:bg-accent/90">
-              <Trophy className="h-5 w-5" />
-              Schedule a Demo
+              <Users className="h-5 w-5" />
+              Join the Waitlist
             </Button>
             <Button size="lg" variant="outline" className="gap-2 text-base px-8 py-6 font-semibold border-2">
-              <Users className="h-5 w-5" />
-              View Case Studies
+              <Trophy className="h-5 w-5" />
+              Learn More
             </Button>
           </div>
 

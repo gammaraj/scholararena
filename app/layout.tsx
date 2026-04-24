@@ -14,8 +14,8 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'ScholarArena | Academic Competition Management Platform',
-  description: 'The premier digital platform for academic competitions. Serving debate competitions, academic bowls, olympiads, and knowledge competitions. Built on Brakto\'s proven infrastructure.',
+  title: 'ScholarArena | Academic Competition Management Platform (Coming Soon)',
+  description: 'An upcoming digital platform for academic competitions. Designed to serve debate competitions, academic bowls, olympiads, and knowledge competitions. Built on Brakto\'s proven infrastructure.',
   keywords: ['academic competition platform', 'competition management', 'history bee', 'science bee', 'geography bee', 'quiz bowl', 'debate competitions', 'academic olympiad', 'competition software', 'B2B platform'],
   icons: {
     icon: '/favicon.svg',

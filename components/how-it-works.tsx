@@ -5,7 +5,7 @@ const steps = [
   {
     step: 1,
     title: "Platform Setup",
-    description: "We configure the platform with your branding, competition types, divisions (EMS, V/JV), and question sets.",
+    description: "We'll configure the platform with your branding, competition types, divisions (EMS, V/JV), and question sets.",
     icon: UserPlus,
   },
   {
@@ -17,7 +17,7 @@ const steps = [
   {
     step: 3,
     title: "Run Competitions",
-    description: "Manage live scoring, brackets, and staff assignments. Real-time updates keep participants and families informed.",
+    description: "Manage live scoring, brackets, and staff assignments. Real-time updates will keep participants and families informed.",
     icon: Trophy,
   },
   {
@@ -34,13 +34,13 @@ export function HowItWorks() {
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-2xl text-center mb-16">
           <Badge variant="outline" className="mb-4">
-            Getting Started
+            How It Will Work
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-balance">
-            How ScholarArena Works
+            How ScholarArena Will Work
           </h2>
           <p className="mt-4 text-lg text-muted-foreground text-pretty">
-            From setup to national championships, we handle the technology so you can focus on running great competitions.
+            From setup to national championships, we'll handle the technology so you can focus on running great competitions.
           </p>
         </div>
 

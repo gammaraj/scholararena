@@ -65,13 +65,13 @@ export function Features() {
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center mb-16">
           <Badge variant="outline" className="mb-4 px-4 py-1.5">
-            Four Specialized Portals
+            Coming Soon - Four Specialized Portals
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-balance">
             Built for Every Stakeholder
           </h2>
           <p className="mt-6 text-lg text-muted-foreground text-pretty leading-relaxed">
-            Parent Portal, Student Portal (14+), Teacher Portal, and Organization Admin Portal—each tailored 
+            Parent Portal, Student Portal (14+), Teacher Portal, and Organization Admin Portal—each will be tailored 
             to specific needs with role-based access and unified data across all portals.
           </p>
         </div>
