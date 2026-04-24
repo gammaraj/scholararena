@@ -18,8 +18,8 @@ export function Hero() {
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-5xl text-center">
           {/* Announcement banner */}
-          <Link href="#features" className="inline-flex items-center gap-2 mb-8 group">
-            <Badge variant="secondary" className="px-4 py-2 text-sm font-medium border hover:bg-muted transition-colors">
+          <Link href="https://brakto.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mb-8 group">
+            <Badge variant="secondary" className="px-4 py-2 text-sm font-medium border hover:bg-secondary/80 hover:border-primary/50 transition-all">
               <span className="mr-2">🚀</span>
               Coming Soon - Built on Brakto's Proven Infrastructure
               <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
