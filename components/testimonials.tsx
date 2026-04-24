@@ -34,35 +34,38 @@ const supportedSubjects = [
 
 export function Testimonials() {
   return (
-    <section className="py-20">
+    <section className="py-24 lg:py-32 bg-gradient-to-b from-background via-muted/20 to-background">
       <div className="container mx-auto px-4">
-        <div className="mx-auto max-w-2xl text-center mb-12">
-          <Badge variant="outline" className="mb-4">
+        <div className="mx-auto max-w-3xl text-center mb-16">
+          <Badge variant="outline" className="mb-6 px-4 py-2 border-2">
             Testimonials
           </Badge>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-balance">
+          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-balance">
             Trusted by Competition Organizations
           </h2>
+          <p className="mt-6 text-lg text-muted-foreground">
+            See what tournament directors and operations managers have to say about ScholarArena
+          </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="relative overflow-hidden">
-              <CardContent className="pt-6">
-                <Quote className="absolute top-4 right-4 h-8 w-8 text-primary/10" />
+            <Card key={index} className="relative overflow-hidden border-2 hover:border-primary/50 transition-all hover:shadow-xl group">
+              <CardContent className="pt-8 pb-6">
+                <Quote className="absolute top-6 right-6 h-10 w-10 text-primary/10 group-hover:text-primary/20 transition-colors" />
                 <blockquote className="relative">
-                  <p className="text-muted-foreground leading-relaxed mb-6">
+                  <p className="text-muted-foreground leading-relaxed mb-8 text-sm">
                     &ldquo;{testimonial.quote}&rdquo;
                   </p>
-                  <footer className="border-t border-border pt-4">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold">
+                  <footer className="border-t border-border/50 pt-6">
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-primary-foreground font-bold text-sm shadow-md">
                         {testimonial.author.split(' ').map(n => n[0]).join('')}
                       </div>
                       <div>
-                        <p className="font-semibold text-sm">{testimonial.author}</p>
-                        <p className="text-xs text-muted-foreground">{testimonial.role}</p>
-                        <p className="text-xs text-muted-foreground">{testimonial.organization}</p>
+                        <p className="font-bold text-sm text-foreground">{testimonial.author}</p>
+                        <p className="text-xs text-muted-foreground font-medium">{testimonial.role}</p>
+                        <p className="text-xs text-primary font-medium">{testimonial.organization}</p>
                       </div>
                     </div>
                   </footer>
@@ -73,18 +76,18 @@ export function Testimonials() {
         </div>
 
         {/* Supported subjects */}
-        <div className="mt-16 text-center">
-          <p className="text-sm text-muted-foreground mb-4">Competitions available in:</p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-20 text-center">
+          <p className="text-sm font-semibold text-muted-foreground mb-6 uppercase tracking-wide">Competitions available in:</p>
+          <div className="flex flex-wrap items-center justify-center gap-4">
             {supportedSubjects.map((subject) => (
               <span
                 key={subject}
-                className="inline-flex items-center rounded-full border border-border bg-card px-4 py-2 text-sm font-medium"
+                className="inline-flex items-center rounded-full border border-border/80 bg-card/50 backdrop-blur-sm px-5 py-2.5 text-sm font-medium shadow-sm hover:shadow-md hover:border-primary/50 transition-all"
               >
                 {subject}
               </span>
             ))}
-            <span className="inline-flex items-center rounded-full border border-dashed border-muted-foreground/50 px-4 py-2 text-sm text-muted-foreground">
+            <span className="inline-flex items-center rounded-full border border-dashed border-muted-foreground/40 bg-muted/30 px-5 py-2.5 text-sm text-muted-foreground">
               + More
             </span>
           </div>

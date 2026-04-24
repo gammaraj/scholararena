@@ -17,25 +17,25 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <nav className="container mx-auto flex h-16 items-center justify-between px-4">
+    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
+      <nav className="container mx-auto flex h-20 items-center justify-between px-4 lg:px-6">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <GraduationCap className="h-5 w-5 text-primary-foreground" />
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent shadow-lg shadow-primary/20 group-hover:shadow-xl group-hover:shadow-primary/30 transition-all group-hover:scale-105">
+            <GraduationCap className="h-6 w-6 text-primary-foreground" />
           </div>
           <span className="text-xl font-bold tracking-tight">
-            Scholar<span className="text-primary">Arena</span>
+            Scholar<span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Arena</span>
           </span>
         </Link>
 
         {/* Desktop navigation */}
-        <div className="hidden lg:flex lg:items-center lg:gap-8">
+        <div className="hidden lg:flex lg:items-center lg:gap-1">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="px-4 py-2 text-sm font-medium text-muted-foreground rounded-lg hover:text-foreground hover:bg-muted/50 transition-all"
             >
               {item.name}
             </Link>
@@ -43,11 +43,13 @@ export function Header() {
         </div>
 
         {/* Desktop CTA */}
-        <div className="hidden lg:flex lg:items-center lg:gap-4">
-          <Button variant="ghost" size="sm">
+        <div className="hidden lg:flex lg:items-center lg:gap-3">
+          <Button variant="ghost" size="sm" className="font-medium">
             Sign In
           </Button>
-          <Button size="sm">Get Started</Button>
+          <Button size="sm" className="font-semibold shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/25">
+            Get Started
+          </Button>
         </div>
 
         {/* Mobile menu button */}
