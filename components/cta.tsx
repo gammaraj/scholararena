@@ -31,9 +31,9 @@ export function CTA() {
             <Button 
               size="lg" 
               variant="outline"
-              className="gap-2 text-base px-8 py-6 font-semibold border-2 border-white text-white hover:bg-white hover:text-primary"
+              className="gap-2 text-base px-8 py-6 font-semibold border-2 border-white/80 bg-transparent text-white hover:bg-white/10 hover:border-white"
             >
-              View Pricing
+              View Proposal
             </Button>
           </div>
 
