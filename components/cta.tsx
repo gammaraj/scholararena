@@ -23,8 +23,7 @@ export function CTA() {
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
               size="lg" 
-              variant="secondary"
-              className="gap-2 text-base px-8 py-6 font-semibold"
+              className="gap-2 text-base px-8 py-6 font-semibold bg-accent text-accent-foreground hover:bg-accent/90"
             >
               Schedule a Demo
               <ArrowRight className="h-5 w-5" />
@@ -32,7 +31,7 @@ export function CTA() {
             <Button 
               size="lg" 
               variant="outline"
-              className="gap-2 text-base px-8 py-6 font-semibold border-2 border-white/30 text-white hover:bg-white/10"
+              className="gap-2 text-base px-8 py-6 font-semibold border-2 border-white text-white hover:bg-white hover:text-primary"
             >
               View Pricing
             </Button>

@@ -42,11 +42,11 @@ export function Hero() {
 
           {/* CTA buttons */}
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="gap-2 text-base px-8 py-6 font-semibold">
+            <Button size="lg" className="gap-2 text-base px-8 py-6 font-semibold bg-accent text-accent-foreground hover:bg-accent/90">
               <Trophy className="h-5 w-5" />
               Schedule a Demo
             </Button>
-            <Button size="lg" variant="outline" className="gap-2 text-base px-8 py-6 font-semibold">
+            <Button size="lg" variant="outline" className="gap-2 text-base px-8 py-6 font-semibold border-2">
               <Users className="h-5 w-5" />
               View Case Studies
             </Button>
