@@ -1,0 +1,30 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#1C3664"/>
+  
+  <!-- Graduation Cap Icon (large) -->
+  <g transform="translate(150, 180)">
+    <!-- Cap base -->
+    <path d="M80 60L20 40L80 20L140 40L80 60Z" fill="#F2A900" stroke="#F2A900" stroke-width="4"/>
+    
+    <!-- Cap top -->
+    <rect x="65" y="10" width="30" height="10" rx="2" fill="#F2A900"/>
+    
+    <!-- Sides -->
+    <path d="M30 45V90C30 105 50 120 80 120C110 120 130 105 130 90V45" 
+          stroke="#F2A900" stroke-width="6" stroke-linecap="round" fill="none"/>
+    
+    <!-- Tassel -->
+    <circle cx="80" cy="5" r="6" fill="#F2A900"/>
+  </g>
+  
+  <!-- Main Text -->
+  <text x="350" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="96" font-weight="700" fill="white" letter-spacing="-2">Scholar</text>
+  <text x="350" y="380" font-family="system-ui, -apple-system, sans-serif" font-size="96" font-weight="700" fill="#F2A900" letter-spacing="-2">Arena</text>
+  
+  <!-- Tagline -->
+  <text x="350" y="450" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="400" fill="rgba(255,255,255,0.8)">Academic Competition Management Platform</text>
+  
+  <!-- Bottom text -->
+  <text x="350" y="530" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="500" fill="rgba(255,255,255,0.6)">Built on Brakto's Proven Infrastructure</text>
+</svg>

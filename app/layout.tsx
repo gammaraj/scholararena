@@ -20,6 +20,28 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.svg',
   },
+  openGraph: {
+    title: 'ScholarArena | Academic Competition Management Platform',
+    description: 'The premier digital platform for academic competitions. Built on Brakto\'s proven infrastructure.',
+    url: 'https://scholararena.com',
+    siteName: 'ScholarArena',
+    images: [
+      {
+        url: '/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: 'ScholarArena - Academic Competition Management Platform',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ScholarArena | Academic Competition Management Platform',
+    description: 'The premier digital platform for academic competitions. Built on Brakto\'s proven infrastructure.',
+    images: ['/og-image.svg'],
+  },
 }
 
 export default function RootLayout({
