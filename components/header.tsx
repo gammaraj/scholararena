@@ -35,7 +35,7 @@ export function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className="px-4 py-2 text-sm font-medium text-muted-foreground rounded-md hover:text-foreground hover:bg-muted transition-colors"
+              className="px-4 py-2 text-sm font-medium text-white/90 rounded-md hover:text-white hover:bg-white/10 transition-colors"
             >
               {item.name}
             </Link>
@@ -44,10 +44,10 @@ export function Header() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex lg:items-center lg:gap-3">
-          <Button variant="ghost" size="sm" className="font-medium">
+          <Button variant="ghost" size="sm" className="font-medium text-white hover:text-white hover:bg-white/10">
             Sign In
           </Button>
-          <Button size="sm" className="font-semibold">
+          <Button size="sm" className="font-semibold bg-accent text-accent-foreground hover:bg-accent/90">
             Get Started
           </Button>
         </div>
