@@ -4,26 +4,26 @@ import { UserPlus, FileText, Trophy, Medal } from "lucide-react"
 const steps = [
   {
     step: 1,
-    title: "Create Your Account",
-    description: "Sign up as a student, parent, or school administrator. Connect with your school or create an independent profile.",
+    title: "Platform Setup",
+    description: "We configure the platform with your branding, competition types, divisions (EMS, V/JV), and question sets.",
     icon: UserPlus,
   },
   {
     step: 2,
-    title: "Register for Events",
-    description: "Browse competitions by subject, grade level, and location. Register online and receive instant confirmation.",
+    title: "Open Registration",
+    description: "Launch registration portals for qualifying exams and regional tournaments. Automated confirmations and payment processing.",
     icon: FileText,
   },
   {
     step: 3,
-    title: "Compete & Track Progress",
-    description: "Participate in regional and national events. View live brackets, scores, and standings in real-time.",
+    title: "Run Tournaments",
+    description: "Manage live scoring, brackets, and staff assignments. Real-time updates keep participants and families informed.",
     icon: Trophy,
   },
   {
     step: 4,
-    title: "Earn Recognition",
-    description: "Win medals, certificates, and scholarships. Build your academic profile for college applications.",
+    title: "Track & Report",
+    description: "Automatic qualification tracking, national rankings, and comprehensive reporting for all stakeholders.",
     icon: Medal,
   },
 ]
@@ -37,10 +37,10 @@ export function HowItWorks() {
             Getting Started
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-balance">
-            Your Path to Academic Excellence
+            How ScholarArena Works
           </h2>
           <p className="mt-4 text-lg text-muted-foreground text-pretty">
-            Join thousands of students competing in prestigious academic competitions.
+            From setup to national championships, we handle the technology so you can focus on running great competitions.
           </p>
         </div>
 

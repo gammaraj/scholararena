@@ -14,9 +14,9 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'ScholarArena | Quiz Competitions for Students',
-  description: 'The premier platform for academic competitions in History, Science, Geography, and more. Create brackets, manage events, and compete with students worldwide.',
-  keywords: ['academic competitions', 'quiz bowl', 'history bee', 'science bee', 'geography bee', 'student competitions'],
+  title: 'ScholarArena | Tournament Management for Academic Competitions',
+  description: 'Complete tournament management platform for History Bee, Science Bee, Geography Bee, and Bowl competitions. Registration, brackets, scoring, and results for 150+ tournaments.',
+  keywords: ['tournament management', 'academic competitions', 'quiz bowl', 'history bee', 'science bee', 'geography bee', 'bracket management', 'competition software'],
 }
 
 export default function RootLayout({

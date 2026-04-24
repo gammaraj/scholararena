@@ -4,22 +4,22 @@ import { Quote } from "lucide-react"
 
 const testimonials = [
   {
-    quote: "ScholarArena transformed how we run our regional competitions. The live brackets and instant scoring keep everyone engaged and excited.",
+    quote: "ScholarArena streamlined our entire tournament operation. Managing 150+ regional events used to require a team of 10+ people. Now we do it with 3.",
     author: "Dr. Sarah Chen",
     role: "Competition Director",
-    organization: "Northeast Academic League",
+    organization: "National Academic League",
   },
   {
-    quote: "My students love tracking their progress and seeing how they stack up nationally. It&apos;s made competition prep so much more motivating!",
+    quote: "The real-time bracket updates and family portal were game-changers. Parents love following along, and we get 90% fewer 'where's my kid?' phone calls.",
     author: "Michael Torres",
-    role: "History Teacher & Coach",
-    organization: "Lincoln Middle School",
+    role: "Tournament Operations Manager",
+    organization: "Regional Quiz Bowl Association",
   },
   {
-    quote: "As a parent, I appreciate being able to follow along with live results. It&apos;s wonderful to see my daughter&apos;s achievements in real-time.",
+    quote: "Moving from spreadsheets to ScholarArena saved us countless hours. Registration, qualification tracking, and national rankings all happen automatically now.",
     author: "Jennifer Williams",
-    role: "Parent",
-    organization: "Science Bee Participant",
+    role: "Executive Director",
+    organization: "History Bee Federation",
   },
 ]
 
@@ -41,7 +41,7 @@ export function Testimonials() {
             Testimonials
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-balance">
-            Trusted by Educators & Students
+            Trusted by Competition Organizations
           </h2>
         </div>
 

@@ -13,48 +13,48 @@ import {
 
 const features = [
   {
-    title: "Live Bracket Management",
-    description: "Real-time tournament brackets that update automatically as competitions progress.",
+    title: "Multi-Tournament Management",
+    description: "Run 150+ regional tournaments simultaneously with different question sets (Red, White, Blue, Gold) and divisions.",
     icon: Trophy,
   },
   {
-    title: "Comprehensive Analytics",
-    description: "Track student performance across subjects, competitions, and years with detailed statistics.",
-    icon: BarChart3,
-  },
-  {
-    title: "Team Management",
-    description: "Organize school teams, manage rosters, and coordinate group registrations easily.",
-    icon: Users,
-  },
-  {
-    title: "Smart Scheduling",
-    description: "Automated scheduling handles conflicts and optimizes event timing across venues.",
-    icon: Clock,
-  },
-  {
-    title: "Excel/CSV Import",
-    description: "Bulk upload student rosters and registration data from your existing spreadsheets.",
+    title: "Registration & Payment Processing",
+    description: "Streamlined online registration with automated payment handling, waitlists, and confirmation emails.",
     icon: FileSpreadsheet,
   },
   {
-    title: "QR Check-In",
-    description: "Contactless check-in with QR codes for fast and accurate attendance tracking.",
+    title: "Live Scoring & Brackets",
+    description: "Real-time buzzer-based scoring with instant bracket updates that participants and families can follow online.",
+    icon: BarChart3,
+  },
+  {
+    title: "Staff & Reader Management",
+    description: "Coordinate tournament staff, assign readers and scorekeepers, and manage operational teams efficiently.",
+    icon: Users,
+  },
+  {
+    title: "Multi-Stage Competitions",
+    description: "Support qualifying exams, regional tournaments, and national championships in one integrated system.",
+    icon: Clock,
+  },
+  {
+    title: "Results & Rankings",
+    description: "Automatic qualification tracking, national rankings, and comprehensive results reporting for all divisions.",
     icon: QrCode,
   },
   {
-    title: "Real-Time Notifications",
-    description: "Instant updates for schedule changes, results, and important announcements.",
+    title: "Family Portal",
+    description: "Parents and coaches get real-time access to schedules, brackets, and results through dedicated portals.",
     icon: Bell,
   },
   {
-    title: "Secure & Compliant",
-    description: "COPPA-compliant platform with robust data protection for student information.",
+    title: "COPPA Compliant",
+    description: "Full compliance with COPPA and student data protection regulations for K-12 participants.",
     icon: Shield,
   },
   {
-    title: "Mobile Friendly",
-    description: "Full functionality on any device so students and coaches can access info anywhere.",
+    title: "White-Label Solution",
+    description: "Fully customizable branding to match your organization's identity and maintain your reputation.",
     icon: Smartphone,
   },
 ]
@@ -68,10 +68,10 @@ export function Features() {
             Platform Features
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-balance">
-            Built for Academic Competition Organizers
+            Built for Academic Competition Organizations
           </h2>
           <p className="mt-4 text-lg text-muted-foreground text-pretty">
-            Everything you need to run professional academic competitions at any scale.
+            Everything you need to run History Bee, Science Bee, Geography Bee, and Bowl competitions at scale—from qualifying exams to national championships.
           </p>
         </div>
 

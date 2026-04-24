@@ -93,10 +93,10 @@ export function Competitions() {
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-2xl text-center mb-12">
           <Badge variant="outline" className="mb-4">
-            Upcoming Events
+            Platform Capabilities
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-balance">
-            Featured Competitions
+            Tournament Examples We Support
           </h2>
           <p className="mt-4 text-lg text-muted-foreground text-pretty">
             Browse our upcoming academic competitions for students of all grade levels.

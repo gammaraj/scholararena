@@ -24,53 +24,53 @@ export function Hero() {
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-4xl text-center">
           {/* Announcement banner */}
-          <Link href="#competitions" className="inline-flex items-center gap-2 mb-8 group">
+          <Link href="#features" className="inline-flex items-center gap-2 mb-8 group">
             <Badge variant="secondary" className="px-4 py-1.5 text-sm font-medium">
-              <span className="mr-2">🎓</span>
-              National Championships 2026
+              <span className="mr-2">🚀</span>
+              Trusted by Leading Competition Organizers
               <ArrowRight className="ml-2 h-3 w-3 transition-transform group-hover:translate-x-1" />
             </Badge>
           </Link>
 
           {/* Main headline */}
           <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            <span className="block">Where Knowledge</span>
+            <span className="block">Tournament Management</span>
             <span className="block mt-2 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-              Becomes Victory
+              Made Simple
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-muted-foreground leading-relaxed">
-            The premier platform for academic competitions. Create tournaments, manage brackets, 
-            and compete with students from elementary to high school across History, Science, Geography, and more.
+            The complete platform for academic competition organizers. Manage registrations, brackets, scoring, 
+            and results for History Bee, Science Bee, Geography Bee, and more—all in one place.
           </p>
 
           {/* CTA buttons */}
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" className="gap-2 text-base px-8">
               <Trophy className="h-5 w-5" />
-              Create Competition
+              Schedule a Demo
             </Button>
             <Button size="lg" variant="outline" className="gap-2 text-base px-8">
               <Users className="h-5 w-5" />
-              Browse Events
+              View Case Studies
             </Button>
           </div>
 
           {/* Stats */}
           <div className="mt-16 grid grid-cols-3 gap-8 border-t border-border pt-10">
             <div>
-              <p className="text-3xl font-bold text-primary">10,000+</p>
-              <p className="mt-1 text-sm text-muted-foreground">Students Competing</p>
+              <p className="text-3xl font-bold text-primary">150+</p>
+              <p className="mt-1 text-sm text-muted-foreground">Regional Tournaments</p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-secondary">500+</p>
-              <p className="mt-1 text-sm text-muted-foreground">Competitions Hosted</p>
+              <p className="text-3xl font-bold text-secondary">2,000+</p>
+              <p className="mt-1 text-sm text-muted-foreground">Participants per Event</p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-primary">50+</p>
-              <p className="mt-1 text-sm text-muted-foreground">Schools Nationwide</p>
+              <p className="text-3xl font-bold text-primary">99.9%</p>
+              <p className="mt-1 text-sm text-muted-foreground">Platform Uptime</p>
             </div>
           </div>
 

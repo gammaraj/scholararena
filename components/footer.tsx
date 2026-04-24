@@ -47,8 +47,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs">
-              The premier platform for academic competitions. Empowering students 
-              from elementary to high school across the nation.
+              Tournament management platform for academic competition organizations. 
+              Supporting History Bee, Science Bee, Geography Bee, and Bowl competitions nationwide.
             </p>
             <div className="mt-6">
               <p className="text-sm text-muted-foreground">
