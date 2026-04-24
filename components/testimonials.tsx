@@ -4,7 +4,7 @@ import { Quote } from "lucide-react"
 
 const testimonials = [
   {
-    quote: "ScholarArena transformed our operations. Managing 190+ events annually with 12,000+ students used to be overwhelming. Now it's streamlined and efficient.",
+    quote: "ScholarArena transformed our operations. Managing multiple events with thousands of students used to be overwhelming. Now it's streamlined and efficient.",
     author: "David Morrison",
     role: "Operations Director",
     organization: "International Academic Competitions",

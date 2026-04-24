@@ -38,8 +38,8 @@ const features = [
     icon: Shield,
   },
   {
-    title: "190+ Events Annually",
-    description: "Proven at scale—supporting History Bee, Science Bee, Geography Bee, Bowl competitions for 12,000+ students.",
+    title: "Proven at Scale",
+    description: "Supporting History Bee, Science Bee, Geography Bee, and Bowl competitions with enterprise-grade reliability.",
     icon: BarChart3,
   },
   {

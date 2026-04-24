@@ -37,8 +37,7 @@ export function Hero() {
           {/* Subtitle */}
           <p className="mx-auto mt-8 max-w-3xl text-pretty text-xl text-muted-foreground leading-relaxed">
             The premier digital platform for academic competitions — serving debate tournaments, academic bowls, 
-            olympiads, and knowledge competitions. Powered by Brakto's proven tournament infrastructure, serving 
-            1,700+ users across 50+ countries.
+            olympiads, and knowledge competitions. Powered by Brakto's proven tournament infrastructure.
           </p>
 
           {/* CTA buttons */}
@@ -51,22 +50,6 @@ export function Hero() {
               <Users className="h-5 w-5" />
               View Case Studies
             </Button>
-          </div>
-
-          {/* Stats */}
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 border-t border-border pt-10">
-            <div>
-              <p className="text-4xl lg:text-5xl font-bold text-primary">190+</p>
-              <p className="mt-2 text-sm font-medium text-muted-foreground">Events Annually</p>
-            </div>
-            <div>
-              <p className="text-4xl lg:text-5xl font-bold text-primary">12,000+</p>
-              <p className="mt-2 text-sm font-medium text-muted-foreground">Students Served</p>
-            </div>
-            <div>
-              <p className="text-4xl lg:text-5xl font-bold text-primary">50+</p>
-              <p className="mt-2 text-sm font-medium text-muted-foreground">Countries Worldwide</p>
-            </div>
           </div>
 
           {/* Subject pills */}

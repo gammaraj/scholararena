@@ -47,8 +47,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs leading-relaxed">
-              The premier digital platform for academic competitions. Built on Brakto's proven tournament 
-              infrastructure, serving 1,700+ users across 50+ countries.
+              The premier digital platform for academic competitions. Built on Brakto's proven tournament infrastructure.
             </p>
             <div className="mt-6">
               <p className="text-sm font-medium text-muted-foreground mb-2">

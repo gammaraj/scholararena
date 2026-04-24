@@ -16,8 +16,7 @@ export function CTA() {
           </h2>
           
           <p className="mt-6 text-xl text-white/90 text-pretty leading-relaxed max-w-3xl mx-auto">
-            Join organizations managing 190+ events and 12,000+ students annually. See how ScholarArena's 
-            four-portal platform streamlines every aspect of academic competition management.
+            See how ScholarArena's four-portal platform streamlines every aspect of academic competition management—from registration to real-time results.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
