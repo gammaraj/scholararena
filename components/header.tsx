@@ -17,15 +17,15 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
-      <nav className="container mx-auto flex h-20 items-center justify-between px-4 lg:px-6">
+    <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur-sm">
+      <nav className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent shadow-lg shadow-primary/20 group-hover:shadow-xl group-hover:shadow-primary/30 transition-all group-hover:scale-105">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary group-hover:bg-primary/90 transition-colors">
             <GraduationCap className="h-6 w-6 text-primary-foreground" />
           </div>
           <span className="text-xl font-bold tracking-tight">
-            Scholar<span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Arena</span>
+            Scholar<span className="text-primary">Arena</span>
           </span>
         </Link>
 
@@ -35,7 +35,7 @@ export function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className="px-4 py-2 text-sm font-medium text-muted-foreground rounded-lg hover:text-foreground hover:bg-muted/50 transition-all"
+              className="px-4 py-2 text-sm font-medium text-muted-foreground rounded-md hover:text-foreground hover:bg-muted transition-colors"
             >
               {item.name}
             </Link>
@@ -47,7 +47,7 @@ export function Header() {
           <Button variant="ghost" size="sm" className="font-medium">
             Sign In
           </Button>
-          <Button size="sm" className="font-semibold shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/25">
+          <Button size="sm" className="font-semibold">
             Get Started
           </Button>
         </div>

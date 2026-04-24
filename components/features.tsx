@@ -61,41 +61,33 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="py-24 lg:py-32 bg-gradient-to-b from-muted/30 via-muted/10 to-background">
+    <section id="features" className="py-20 lg:py-28 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="mx-auto max-w-3xl text-center mb-20">
-          <Badge variant="outline" className="mb-6 px-4 py-2 border-2">
+        <div className="mx-auto max-w-3xl text-center mb-16">
+          <Badge variant="outline" className="mb-4 px-4 py-1.5">
             Platform Features
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-balance">
             Built for Academic Competition Organizations
           </h2>
-          <p className="mt-6 text-lg lg:text-xl text-muted-foreground text-pretty leading-relaxed">
+          <p className="mt-6 text-lg text-muted-foreground text-pretty leading-relaxed">
             Everything you need to run History Bee, Science Bee, Geography Bee, and Bowl competitions at scale—from qualifying exams to national championships.
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => (
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature) => (
             <div
               key={feature.title}
-              className="group relative rounded-2xl border border-border/80 bg-card/50 backdrop-blur-sm p-8 transition-all hover:border-primary/50 hover:shadow-xl hover:-translate-y-1"
-              style={{
-                animationDelay: `${index * 50}ms`
-              }}
+              className="group relative rounded-lg border border-border bg-white p-6 transition-all hover:border-primary hover:shadow-lg"
             >
-              {/* Gradient accent on hover */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              
-              <div className="relative">
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 text-primary group-hover:from-primary group-hover:to-accent group-hover:text-primary-foreground group-hover:shadow-lg transition-all">
-                  <feature.icon className="h-7 w-7" />
-                </div>
-                <h3 className="mb-3 font-bold text-lg text-foreground group-hover:text-primary transition-colors">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <feature.icon className="h-6 w-6" />
               </div>
+              <h3 className="mb-2 font-bold text-lg text-foreground">{feature.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>

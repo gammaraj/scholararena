@@ -33,28 +33,28 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/50 bg-gradient-to-b from-muted/20 to-muted/40">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-6">
+    <footer className="border-t border-border bg-muted/30">
+      <div className="container mx-auto px-4 py-12 lg:py-16">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-6">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent shadow-lg group-hover:shadow-xl transition-all">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary group-hover:bg-primary/90 transition-colors">
                 <GraduationCap className="h-6 w-6 text-primary-foreground" />
               </div>
               <span className="text-xl font-bold tracking-tight">
-                Scholar<span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Arena</span>
+                Scholar<span className="text-primary">Arena</span>
               </span>
             </Link>
-            <p className="mt-6 text-sm text-muted-foreground max-w-xs leading-relaxed">
+            <p className="mt-4 text-sm text-muted-foreground max-w-xs leading-relaxed">
               Tournament management platform for academic competition organizations. 
               Supporting History Bee, Science Bee, Geography Bee, and Bowl competitions nationwide.
             </p>
-            <div className="mt-8">
+            <div className="mt-6">
               <p className="text-sm font-semibold text-foreground mb-2">
                 Questions? Contact us:
               </p>
-              <a href="mailto:info@scholararena.com" className="text-sm font-semibold text-primary hover:text-accent transition-colors">
+              <a href="mailto:info@scholararena.com" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
                 info@scholararena.com
               </a>
             </div>
@@ -62,8 +62,8 @@ export function Footer() {
 
           {/* Links */}
           <div>
-            <h3 className="font-bold text-foreground mb-5 text-sm uppercase tracking-wide">Competitions</h3>
-            <ul className="space-y-3">
+            <h3 className="font-bold text-foreground mb-4 text-sm uppercase tracking-wide">Competitions</h3>
+            <ul className="space-y-2.5">
               {footerLinks.competitions.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium">
@@ -75,8 +75,8 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-bold text-foreground mb-5 text-sm uppercase tracking-wide">Resources</h3>
-            <ul className="space-y-3">
+            <h3 className="font-bold text-foreground mb-4 text-sm uppercase tracking-wide">Resources</h3>
+            <ul className="space-y-2.5">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium">
@@ -88,8 +88,8 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-bold text-foreground mb-5 text-sm uppercase tracking-wide">Company</h3>
-            <ul className="space-y-3">
+            <h3 className="font-bold text-foreground mb-4 text-sm uppercase tracking-wide">Company</h3>
+            <ul className="space-y-2.5">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium">
@@ -101,8 +101,8 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-bold text-foreground mb-5 text-sm uppercase tracking-wide">Legal</h3>
-            <ul className="space-y-3">
+            <h3 className="font-bold text-foreground mb-4 text-sm uppercase tracking-wide">Legal</h3>
+            <ul className="space-y-2.5">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium">
@@ -115,7 +115,7 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 pt-8 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground font-medium">
             © {new Date().getFullYear()} ScholarArena. All rights reserved.
           </p>
