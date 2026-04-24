@@ -44,7 +44,7 @@ export function Testimonials() {
             Trusted by Competition Organizations
           </h2>
           <p className="mt-6 text-lg text-muted-foreground">
-            See what tournament directors and operations managers have to say about ScholarArena
+            See what competition directors and operations managers have to say about ScholarArena
           </p>
         </div>
 

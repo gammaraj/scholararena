@@ -28,7 +28,7 @@ export function Hero() {
 
           {/* Main headline */}
           <h1 className="text-balance text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-foreground">
-            <span className="block">Tournament Management</span>
+            <span className="block">Competition Management</span>
             <span className="block mt-3 text-primary">
               Made Simple
             </span>
@@ -36,8 +36,8 @@ export function Hero() {
 
           {/* Subtitle */}
           <p className="mx-auto mt-8 max-w-3xl text-pretty text-xl text-muted-foreground leading-relaxed">
-            The premier digital platform for academic competitions — serving debate tournaments, academic bowls, 
-            olympiads, and knowledge competitions. Powered by Brakto's proven tournament infrastructure.
+            The premier digital platform for academic competitions — serving debate competitions, academic bowls, 
+            olympiads, and knowledge competitions. Powered by Brakto's proven competition infrastructure.
           </p>
 
           {/* CTA buttons */}

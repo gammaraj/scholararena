@@ -96,7 +96,7 @@ export function Competitions() {
             Platform Capabilities
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-balance">
-            Tournament Examples We Support
+            Competition Examples We Support
           </h2>
           <p className="mt-4 text-lg text-muted-foreground text-pretty">
             Browse our upcoming academic competitions for students of all grade levels.

@@ -11,12 +11,12 @@ const steps = [
   {
     step: 2,
     title: "Open Registration",
-    description: "Launch registration portals for qualifying exams and regional tournaments. Automated confirmations and payment processing.",
+    description: "Launch registration portals for qualifying exams and regional competitions. Automated confirmations and payment processing.",
     icon: FileText,
   },
   {
     step: 3,
-    title: "Run Tournaments",
+    title: "Run Competitions",
     description: "Manage live scoring, brackets, and staff assignments. Real-time updates keep participants and families informed.",
     icon: Trophy,
   },
