@@ -10,7 +10,6 @@ const navigation = [
   { name: "How It Works", href: "#how-it-works" },
   { name: "Resources", href: "#resources" },
   { name: "Results", href: "#results" },
-  { name: "Pricing", href: "#pricing" },
 ]
 
 export function Header() {
@@ -44,9 +43,6 @@ export function Header() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex lg:items-center lg:gap-3">
-          <Button variant="ghost" size="sm" className="font-medium text-white hover:text-white hover:bg-white/10">
-            Sign In
-          </Button>
           <Button size="sm" className="font-semibold bg-accent text-accent-foreground hover:bg-accent/90">
             Get Started
           </Button>
@@ -81,8 +77,7 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
-            <div className="mt-4 flex flex-col gap-2 pt-4 border-t border-white/20">
-              <Button variant="outline" className="w-full border-white/30 text-white hover:bg-white/10">Sign In</Button>
+            <div className="mt-4 pt-4 border-t border-white/20">
               <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">Get Started</Button>
             </div>
           </div>

@@ -47,10 +47,13 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs leading-relaxed">
-              Tournament management platform for academic competition organizations. 
-              Supporting History Bee, Science Bee, Geography Bee, and Bowl competitions nationwide.
+              The premier digital platform for academic competitions. Built on Brakto's proven tournament 
+              infrastructure, serving 1,700+ users across 50+ countries.
             </p>
             <div className="mt-6">
+              <p className="text-sm font-medium text-muted-foreground mb-2">
+                Built on <a href="https://brakto.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 font-semibold">Brakto</a>'s proven infrastructure
+              </p>
               <p className="text-sm font-semibold text-foreground mb-2">
                 Questions? Contact us:
               </p>

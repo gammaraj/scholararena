@@ -13,49 +13,49 @@ import {
 
 const features = [
   {
-    title: "Multi-Tournament Management",
-    description: "Run 150+ regional tournaments simultaneously with different question sets (Red, White, Blue, Gold) and divisions.",
-    icon: Trophy,
-  },
-  {
-    title: "Registration & Payment Processing",
-    description: "Streamlined online registration with automated payment handling, waitlists, and confirmation emails.",
-    icon: FileSpreadsheet,
-  },
-  {
-    title: "Live Scoring & Brackets",
-    description: "Real-time buzzer-based scoring with instant bracket updates that participants and families can follow online.",
-    icon: BarChart3,
-  },
-  {
-    title: "Staff & Reader Management",
-    description: "Coordinate tournament staff, assign readers and scorekeepers, and manage operational teams efficiently.",
+    title: "Parent Portal (COPPA-Compliant)",
+    description: "Register minor children with required consent, view all registrations, schedules, results, and qualification status in unified dashboard.",
     icon: Users,
   },
   {
-    title: "Multi-Stage Competitions",
-    description: "Support qualifying exams, regional tournaments, and national championships in one integrated system.",
-    icon: Clock,
+    title: "Student Portal (Ages 14+)",
+    description: "Self-registration, personal dashboard with competition history, QR code access for check-in, and qualification tracking.",
+    icon: Smartphone,
   },
   {
-    title: "Results & Rankings",
-    description: "Automatic qualification tracking, national rankings, and comprehensive results reporting for all divisions.",
-    icon: QrCode,
+    title: "Teacher Portal",
+    description: "Bulk student registration via CSV, manage Bowl team rosters (4+2), view school-wide participation and statistics.",
+    icon: FileSpreadsheet,
   },
   {
-    title: "Family Portal",
-    description: "Parents and coaches get real-time access to schedules, brackets, and results through dedicated portals.",
-    icon: Bell,
+    title: "Organization Admin Portal",
+    description: "Create and manage events, process registrations, QR check-in, score entry, room assignments, comprehensive reporting.",
+    icon: Trophy,
   },
   {
-    title: "COPPA Compliant",
-    description: "Full compliance with COPPA and student data protection regulations for K-12 participants.",
+    title: "Multi-Organization Architecture",
+    description: "Each organization gets isolated workspace with custom branding while sharing proven platform infrastructure.",
     icon: Shield,
   },
   {
-    title: "White-Label Solution",
-    description: "Fully customizable branding to match your organization's identity and maintain your reputation.",
-    icon: Smartphone,
+    title: "190+ Events Annually",
+    description: "Proven at scale—supporting History Bee, Science Bee, Geography Bee, Bowl competitions for 12,000+ students.",
+    icon: BarChart3,
+  },
+  {
+    title: "Qualification Intelligence",
+    description: "Upload qualification exam results, enforce eligibility for Nationals, track Regional → National → International pathways.",
+    icon: QrCode,
+  },
+  {
+    title: "Real-Time Operations",
+    description: "QR check-in on tablets, room assignments, live score entry by moderators, real-time leaderboards and standings.",
+    icon: Clock,
+  },
+  {
+    title: "Enterprise-Grade Reliability",
+    description: "99.9% uptime SLA, SOC 2 Type II compliant infrastructure, automatic backups, and dedicated support.",
+    icon: Bell,
   },
 ]
 
@@ -65,13 +65,14 @@ export function Features() {
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center mb-16">
           <Badge variant="outline" className="mb-4 px-4 py-1.5">
-            Platform Features
+            Four Specialized Portals
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-balance">
-            Built for Academic Competition Organizations
+            Built for Every Stakeholder
           </h2>
           <p className="mt-6 text-lg text-muted-foreground text-pretty leading-relaxed">
-            Everything you need to run History Bee, Science Bee, Geography Bee, and Bowl competitions at scale—from qualifying exams to national championships.
+            Parent Portal, Student Portal (14+), Teacher Portal, and Organization Admin Portal—each tailored 
+            to specific needs with role-based access and unified data across all portals.
           </p>
         </div>
 

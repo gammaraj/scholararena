@@ -20,8 +20,8 @@ export function Hero() {
           {/* Announcement banner */}
           <Link href="#features" className="inline-flex items-center gap-2 mb-8 group">
             <Badge variant="secondary" className="px-4 py-2 text-sm font-medium border hover:bg-muted transition-colors">
-              <span className="mr-2">🚀</span>
-              Trusted by Leading Competition Organizers
+              <span className="mr-2">⚡</span>
+              Built on Brakto's Proven Infrastructure
               <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
             </Badge>
           </Link>
@@ -36,8 +36,9 @@ export function Hero() {
 
           {/* Subtitle */}
           <p className="mx-auto mt-8 max-w-3xl text-pretty text-xl text-muted-foreground leading-relaxed">
-            The complete platform for academic competition organizers. Manage registrations, brackets, scoring, 
-            and results for History Bee, Science Bee, Geography Bee, and more—all in one place.
+            The premier digital platform for academic competitions — serving debate tournaments, academic bowls, 
+            olympiads, and knowledge competitions. Powered by Brakto's proven tournament infrastructure, serving 
+            1,700+ users across 50+ countries.
           </p>
 
           {/* CTA buttons */}
@@ -55,16 +56,16 @@ export function Hero() {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 border-t border-border pt-10">
             <div>
-              <p className="text-4xl lg:text-5xl font-bold text-primary">150+</p>
-              <p className="mt-2 text-sm font-medium text-muted-foreground">Regional Tournaments</p>
+              <p className="text-4xl lg:text-5xl font-bold text-primary">190+</p>
+              <p className="mt-2 text-sm font-medium text-muted-foreground">Events Annually</p>
             </div>
             <div>
-              <p className="text-4xl lg:text-5xl font-bold text-primary">2,000+</p>
-              <p className="mt-2 text-sm font-medium text-muted-foreground">Participants per Event</p>
+              <p className="text-4xl lg:text-5xl font-bold text-primary">12,000+</p>
+              <p className="mt-2 text-sm font-medium text-muted-foreground">Students Served</p>
             </div>
             <div>
-              <p className="text-4xl lg:text-5xl font-bold text-primary">99.9%</p>
-              <p className="mt-2 text-sm font-medium text-muted-foreground">Platform Uptime</p>
+              <p className="text-4xl lg:text-5xl font-bold text-primary">50+</p>
+              <p className="mt-2 text-sm font-medium text-muted-foreground">Countries Worldwide</p>
             </div>
           </div>
 

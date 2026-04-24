@@ -8,16 +8,16 @@ export function CTA() {
         <div className="mx-auto max-w-4xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-5 py-2 text-sm font-semibold mb-6">
             <Sparkles className="h-4 w-4" />
-            <span>Trusted by Leading Academic Competition Organizations</span>
+            <span>Built on Brakto's Proven Infrastructure</span>
           </div>
           
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-balance">
-            Ready to Transform Your Tournament Operations?
+            Ready to Transform Your Organization's Operations?
           </h2>
           
           <p className="mt-6 text-xl text-white/90 text-pretty leading-relaxed max-w-3xl mx-auto">
-            See how ScholarArena can help you manage History Bee, Science Bee, Geography Bee, and Bowl competitions
-            with the same efficiency as organizations running 150+ tournaments annually.
+            Join organizations managing 190+ events and 12,000+ students annually. See how ScholarArena's 
+            four-portal platform streamlines every aspect of academic competition management.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -4,22 +4,22 @@ import { Quote } from "lucide-react"
 
 const testimonials = [
   {
-    quote: "ScholarArena streamlined our entire tournament operation. Managing 150+ regional events used to require a team of 10+ people. Now we do it with 3.",
-    author: "Dr. Sarah Chen",
-    role: "Competition Director",
-    organization: "National Academic League",
+    quote: "ScholarArena transformed our operations. Managing 190+ events annually with 12,000+ students used to be overwhelming. Now it's streamlined and efficient.",
+    author: "David Morrison",
+    role: "Operations Director",
+    organization: "International Academic Competitions",
   },
   {
-    quote: "The real-time bracket updates and family portal were game-changers. Parents love following along, and we get 90% fewer 'where's my kid?' phone calls.",
-    author: "Michael Torres",
-    role: "Tournament Operations Manager",
-    organization: "Regional Quiz Bowl Association",
+    quote: "The four-portal architecture is brilliant. Parents, students, teachers, and our staff each get exactly what they need. No more confusion or duplicate work.",
+    author: "Lisa Chen",
+    role: "Technology Coordinator",
+    organization: "National Quiz Bowl Association",
   },
   {
-    quote: "Moving from spreadsheets to ScholarArena saved us countless hours. Registration, qualification tracking, and national rankings all happen automatically now.",
-    author: "Jennifer Williams",
+    quote: "Built on Brakto's infrastructure means proven reliability. We've had zero downtime during our busiest competition season. The platform just works.",
+    author: "Robert Williams",
     role: "Executive Director",
-    organization: "History Bee Federation",
+    organization: "Academic Olympiad Foundation",
   },
 ]
 
