@@ -164,12 +164,40 @@ export default function ParentDashboard() {
                               <div className="text-sm text-slate-600 mt-1 space-y-1">
                                 <div>📅 {formatDate(reg.event.date)}</div>
                                 <div>📍 {reg.event.location}</div>
+                                
+                                {/* Show selected bees for multi-bee events */}
+                                {reg.selectedBees && reg.selectedBees.length > 0 && (
+                                  <div className="mt-2">
+                                    <div className="text-xs font-semibold text-slate-700 mb-1">Selected Bees:</div>
+                                    <div className="flex gap-2 flex-wrap">
+                                      {reg.selectedBees.map(bee => (
+                                        <Badge key={bee} className="bg-accent/20 text-accent-foreground border-accent/30 text-xs">
+                                          {bee.charAt(0).toUpperCase() + bee.slice(1)}
+                                        </Badge>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+                                
+                                {/* Show selected exams */}
+                                {reg.selectedExams && reg.selectedExams.length > 0 && (
+                                  <div className="mt-2">
+                                    <div className="text-xs font-semibold text-slate-700 mb-1">
+                                      Written Exams ({reg.selectedExams.length}):
+                                    </div>
+                                    <div className="text-xs text-slate-600">
+                                      {reg.selectedExams.join(', ')}
+                                    </div>
+                                  </div>
+                                )}
+                                
+                                {/* Question set */}
                                 <div className="flex gap-3 mt-2">
                                   <Badge variant="outline" className="text-xs">
                                     {reg.event.division}
                                   </Badge>
                                   <Badge variant="outline" className="text-xs">
-                                    {reg.event.questionSet} Set
+                                    {reg.selectedQuestionSet || reg.event.questionSet} Set
                                   </Badge>
                                 </div>
                               </div>

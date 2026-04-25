@@ -236,6 +236,7 @@ export default function AdminDashboard() {
                             <th className="pb-2 font-semibold text-slate-700">Student</th>
                             <th className="pb-2 font-semibold text-slate-700">Grade</th>
                             <th className="pb-2 font-semibold text-slate-700">School</th>
+                            <th className="pb-2 font-semibold text-slate-700">Options</th>
                             <th className="pb-2 font-semibold text-slate-700">Status</th>
                             <th className="pb-2 font-semibold text-slate-700">Payment</th>
                             <th className="pb-2 font-semibold text-slate-700">Check-in</th>
@@ -258,6 +259,27 @@ export default function AdminDashboard() {
                                 <td className="py-3 text-slate-600">{student.grade}</td>
                                 <td className="py-3 text-slate-600 text-xs">
                                   {student.schoolId || 'Individual'}
+                                </td>
+                                <td className="py-3">
+                                  {reg.selectedBees && reg.selectedBees.length > 0 ? (
+                                    <div className="space-y-1">
+                                      <div className="text-xs font-semibold text-slate-700">
+                                        Bees: {reg.selectedBees.map(b => b.charAt(0).toUpperCase()).join(', ')}
+                                      </div>
+                                      {reg.selectedExams && reg.selectedExams.length > 0 && (
+                                        <div className="text-xs text-slate-600">
+                                          {reg.selectedExams.length} exam{reg.selectedExams.length !== 1 ? 's' : ''}
+                                        </div>
+                                      )}
+                                      {reg.selectedQuestionSet && (
+                                        <Badge variant="outline" className="text-xs">
+                                          {reg.selectedQuestionSet}
+                                        </Badge>
+                                      )}
+                                    </div>
+                                  ) : (
+                                    <span className="text-xs text-slate-500">Standard</span>
+                                  )}
                                 </td>
                                 <td className="py-3">
                                   <Badge 

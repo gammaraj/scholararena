@@ -154,12 +154,39 @@ export default function StudentDashboard() {
                     </div>
                   </div>
                   
+                  {/* Show selected bees for multi-bee events */}
+                  {reg.selectedBees && reg.selectedBees.length > 0 && (
+                    <div className="mb-3">
+                      <div className="text-xs font-semibold text-slate-700 mb-1">Your Bees:</div>
+                      <div className="flex gap-2 flex-wrap">
+                        {reg.selectedBees.map(bee => (
+                          <Badge key={bee} className="bg-accent/20 text-accent-foreground border-accent/30 text-xs">
+                            {bee.charAt(0).toUpperCase() + bee.slice(1)}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Show selected exams */}
+                  {reg.selectedExams && reg.selectedExams.length > 0 && (
+                    <div className="mb-3">
+                      <div className="text-xs font-semibold text-slate-700 mb-1">
+                        Written Exams ({reg.selectedExams.length}):
+                      </div>
+                      <div className="text-xs text-slate-600">
+                        {reg.selectedExams.slice(0, 3).join(', ')}
+                        {reg.selectedExams.length > 3 && ` +${reg.selectedExams.length - 3} more`}
+                      </div>
+                    </div>
+                  )}
+                  
                   <div className="flex gap-2 flex-wrap mb-4">
                     <Badge variant="outline" className="text-xs">
                       {reg.event.division}
                     </Badge>
                     <Badge variant="outline" className="text-xs">
-                      {reg.event.questionSet} Set
+                      {reg.selectedQuestionSet || reg.event.questionSet} Set
                     </Badge>
                     <Badge className="bg-primary/10 text-primary border-primary/30 text-lg px-4 py-2">
                       ✓ Confirmed

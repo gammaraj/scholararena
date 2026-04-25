@@ -78,6 +78,12 @@ export interface Event {
   currentRegistrations: number;
   status: 'open' | 'closed' | 'waitlist' | 'completed';
   description: string;
+  // Multi-bee options (for SHG combined events)
+  availableBees?: ('science' | 'history' | 'geography')[];
+  // Written exam options
+  writtenExams?: string[];
+  // Available question sets for this event
+  availableQuestionSets?: QuestionSet[];
 }
 
 // Registration
@@ -94,6 +100,10 @@ export interface Registration {
   checkInStatus: 'not-checked-in' | 'checked-in';
   checkInTime?: Date;
   qrCode: string;
+  // For multi-bee events
+  selectedBees?: ('science' | 'history' | 'geography')[];
+  selectedExams?: string[];
+  selectedQuestionSet?: QuestionSet;
 }
 
 // Qualification record
