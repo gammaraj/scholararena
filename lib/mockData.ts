@@ -1,0 +1,437 @@
+import { User, Student, School, Event, Registration, Qualification, Result } from './types';
+
+// Mock users for demo
+export const mockUsers: User[] = [
+  {
+    id: 'parent-1',
+    email: 'parent@demo.com',
+    firstName: 'John',
+    lastName: 'Smith',
+    role: 'parent',
+    createdAt: new Date('2025-01-01'),
+  },
+  {
+    id: 'student-1',
+    email: 'michael.smith@email.com',
+    firstName: 'Michael',
+    lastName: 'Smith',
+    role: 'student',
+    createdAt: new Date('2025-01-01'),
+  },
+  {
+    id: 'teacher-1',
+    email: 'teacher@demo.com',
+    firstName: 'Sarah',
+    lastName: 'Williams',
+    role: 'teacher',
+    schoolId: 'school-001',
+    createdAt: new Date('2025-01-01'),
+  },
+  {
+    id: 'admin-1',
+    email: 'admin@demo.com',
+    firstName: 'IAC',
+    lastName: 'Admin',
+    role: 'admin',
+    createdAt: new Date('2025-01-01'),
+  },
+];
+
+// Mock students
+export const mockStudents: Student[] = [
+  {
+    id: 'student-001',
+    firstName: 'Emma',
+    lastName: 'Smith',
+    dateOfBirth: new Date('2012-05-15'),
+    grade: 7,
+    schoolId: 'school-001',
+    parentId: 'parent-1',
+    createdAt: new Date('2025-01-01'),
+  },
+  {
+    id: 'student-002',
+    firstName: 'Michael',
+    lastName: 'Smith',
+    dateOfBirth: new Date('2009-08-22'),
+    grade: 10,
+    schoolId: 'school-001',
+    parentId: 'parent-1',
+    email: 'michael.smith@email.com',
+    createdAt: new Date('2025-01-01'),
+  },
+  {
+    id: 'student-003',
+    firstName: 'Sophia',
+    lastName: 'Chen',
+    dateOfBirth: new Date('2011-11-10'),
+    grade: 8,
+    schoolId: 'school-002',
+    email: 'sophia.chen@email.com',
+    createdAt: new Date('2025-01-01'),
+  },
+  {
+    id: 'student-004',
+    firstName: 'Jackson',
+    lastName: 'Williams',
+    dateOfBirth: new Date('2013-03-18'),
+    grade: 6,
+    schoolId: 'school-001',
+    parentId: 'parent-1',
+    createdAt: new Date('2025-01-01'),
+  },
+  {
+    id: 'student-005',
+    firstName: 'Isabella',
+    lastName: 'Rodriguez',
+    dateOfBirth: new Date('2010-07-25'),
+    grade: 9,
+    schoolId: 'school-002',
+    email: 'isabella.rodriguez@email.com',
+    createdAt: new Date('2025-01-01'),
+  },
+];
+
+// Mock schools
+export const mockSchools: School[] = [
+  {
+    id: 'school-001',
+    name: 'Lincoln Middle School',
+    address: '123 Education Lane',
+    city: 'College Park',
+    state: 'MD',
+    zipCode: '20740',
+  },
+  {
+    id: 'school-002',
+    name: 'Thomas Jefferson High School for Science & Technology',
+    address: '6560 Braddock Road',
+    city: 'Alexandria',
+    state: 'VA',
+    zipCode: '22312',
+  },
+  {
+    id: 'school-003',
+    name: 'Montgomery Blair High School',
+    address: '51 University Blvd East',
+    city: 'Silver Spring',
+    state: 'MD',
+    zipCode: '20901',
+  },
+];
+
+// Mock events
+export const mockEvents: Event[] = [
+  {
+    id: 'event-001',
+    name: 'Maryland Regional History Bee 2026',
+    competitionType: 'history-bee',
+    questionSet: 'C',
+    division: 'Middle School',
+    date: new Date('2026-09-15'),
+    location: 'University of Maryland, College Park, MD',
+    capacity: 120,
+    registrationDeadline: new Date('2026-09-03'),
+    registrationFee: 75,
+    currentRegistrations: 45,
+    status: 'open',
+    description: 'Individual competition testing knowledge of U.S. and world history. Top 1/2 qualify for Nationals, top 1/3 qualify for Internationals.',
+  },
+  {
+    id: 'event-002',
+    name: 'Maryland Regional History Bowl 2026',
+    competitionType: 'history-bowl',
+    questionSet: 'B',
+    division: 'Varsity',
+    date: new Date('2026-09-16'),
+    location: 'University of Maryland, College Park, MD',
+    capacity: 32,
+    registrationDeadline: new Date('2026-09-04'),
+    registrationFee: 200,
+    currentRegistrations: 28,
+    status: 'open',
+    description: 'Team-based quiz bowl competition. Teams of 4 players compete in 5 matches. Top 1/2 qualify for Nationals.',
+  },
+  {
+    id: 'event-003',
+    name: 'Varsity & JV National Championships 2026',
+    competitionType: 'history-bee',
+    questionSet: 'A',
+    division: 'Varsity',
+    date: new Date('2027-04-25'),
+    location: 'Arlington, VA',
+    capacity: 200,
+    registrationDeadline: new Date('2027-04-10'),
+    registrationFee: 150,
+    currentRegistrations: 85,
+    status: 'open',
+    description: 'National championship for qualified students. Five Bee events, Three Bowl events, and twelve written exams. Stay-to-play requirement applies. Top half qualify for Internationals.',
+  },
+  {
+    id: 'event-004',
+    name: 'Virginia Regional Science Bee 2026',
+    competitionType: 'science-bee',
+    questionSet: 'Red',
+    division: 'Junior Varsity',
+    date: new Date('2026-10-20'),
+    location: 'Richmond Convention Center, VA',
+    capacity: 100,
+    registrationDeadline: new Date('2026-10-08'),
+    registrationFee: 80,
+    currentRegistrations: 98,
+    status: 'waitlist',
+    description: 'Individual science competition covering biology, chemistry, physics, and earth science. Top 1/2 qualify for Nationals.',
+  },
+  {
+    id: 'event-005',
+    name: 'National Geography Bee - Mid-Atlantic Regional',
+    competitionType: 'geography-bee',
+    questionSet: 'Blue',
+    division: 'Grade 7',
+    date: new Date('2026-11-05'),
+    location: 'Philadelphia Convention Center, PA',
+    capacity: 150,
+    registrationDeadline: new Date('2026-10-24'),
+    registrationFee: 70,
+    currentRegistrations: 72,
+    status: 'open',
+    description: 'Geography knowledge competition for 7th graders. Can register for up to 3 Bees and 12 written exams. Top 1/2 qualify for Nationals.',
+  },
+  {
+    id: 'event-006',
+    name: 'Middle & Elementary National Championships 2027',
+    competitionType: 'shg-bee',
+    questionSet: 'Gold',
+    division: 'Grade 8',
+    date: new Date('2027-05-29'),
+    location: 'Orlando, FL',
+    capacity: 300,
+    registrationDeadline: new Date('2027-05-15'),
+    registrationFee: 175,
+    currentRegistrations: 124,
+    status: 'open',
+    description: 'Memorial Day national championship. Ten Bee events, Two Bowl events, 24 written exams, eight Model UN events. Divisions for grades 8, 7, 6, 5, 4 and under. Top half qualify for Internationals.',
+  },
+  {
+    id: 'event-007',
+    name: 'Model UN Regional Competition',
+    competitionType: 'model-un',
+    questionSet: 'A',
+    division: 'Middle School',
+    date: new Date('2026-12-12'),
+    location: 'Washington, DC',
+    capacity: 80,
+    registrationDeadline: new Date('2026-11-30'),
+    registrationFee: 90,
+    currentRegistrations: 45,
+    status: 'open',
+    description: 'Model United Nations debate competition. Morning and afternoon committee sessions. Can register for up to 6 written exams. Top students qualify for Nationals.',
+  },
+  {
+    id: 'event-008',
+    name: 'International Geography Championships 2026',
+    competitionType: 'geography-bee',
+    questionSet: 'Gold',
+    division: 'Varsity',
+    date: new Date('2026-07-15'),
+    location: 'International Location TBA',
+    capacity: 250,
+    registrationDeadline: new Date('2026-06-30'),
+    registrationFee: 500,
+    currentRegistrations: 156,
+    status: 'open',
+    description: 'International championship for top qualified students. Flat fee includes student program. Friends and Family program available separately. Must have qualified at Nationals.',
+  },
+];
+
+// Mock registrations
+export const mockRegistrations: Registration[] = [
+  {
+    id: 'reg-001',
+    studentId: 'student-001',
+    student: mockStudents[0],
+    eventId: 'event-001',
+    event: mockEvents[0],
+    registeredBy: 'parent-1',
+    registeredAt: new Date('2026-04-20'),
+    status: 'confirmed',
+    paymentStatus: 'paid',
+    checkInStatus: 'not-checked-in',
+    qrCode: 'QR-HBE-2026-MD-001-EMMA-SMITH',
+  },
+  {
+    id: 'reg-002',
+    studentId: 'student-002',
+    student: mockStudents[1],
+    eventId: 'event-002',
+    event: mockEvents[1],
+    registeredBy: 'parent-1',
+    registeredAt: new Date('2026-04-21'),
+    status: 'confirmed',
+    paymentStatus: 'paid',
+    checkInStatus: 'not-checked-in',
+    qrCode: 'QR-HBW-2026-MD-002-MICHAEL-SMITH',
+  },
+  {
+    id: 'reg-003',
+    studentId: 'student-004',
+    student: mockStudents[3],
+    eventId: 'event-005',
+    event: mockEvents[4],
+    registeredBy: 'parent-1',
+    registeredAt: new Date('2026-04-22'),
+    status: 'confirmed',
+    paymentStatus: 'paid',
+    checkInStatus: 'not-checked-in',
+    qrCode: 'QR-GBE-2026-PA-003-JACKSON-WILLIAMS',
+  },
+  {
+    id: 'reg-004',
+    studentId: 'student-002',
+    student: mockStudents[1],
+    eventId: 'event-003',
+    event: mockEvents[2],
+    registeredBy: 'student-002',
+    registeredAt: new Date('2026-04-15'),
+    status: 'confirmed',
+    paymentStatus: 'paid',
+    checkInStatus: 'not-checked-in',
+    qrCode: 'QR-NAT-2027-VA-004-MICHAEL-SMITH',
+  },
+  {
+    id: 'reg-005',
+    studentId: 'student-003',
+    student: mockStudents[2],
+    eventId: 'event-006',
+    event: mockEvents[5],
+    registeredBy: 'student-003',
+    registeredAt: new Date('2026-04-18'),
+    status: 'confirmed',
+    paymentStatus: 'paid',
+    checkInStatus: 'not-checked-in',
+    qrCode: 'QR-NAT-2027-FL-005-SOPHIA-CHEN',
+  },
+  {
+    id: 'reg-006',
+    studentId: 'student-005',
+    student: mockStudents[4],
+    eventId: 'event-004',
+    event: mockEvents[3],
+    registeredBy: 'student-005',
+    registeredAt: new Date('2026-04-23'),
+    status: 'waitlist',
+    paymentStatus: 'paid',
+    checkInStatus: 'not-checked-in',
+    qrCode: 'QR-SBE-2026-VA-006-ISABELLA-RODRIGUEZ',
+  },
+];
+
+// Mock qualifications
+export const mockQualifications: Qualification[] = [
+  {
+    id: 'qual-001',
+    studentId: 'student-002',
+    competitionType: 'geography-bee',
+    qualifiedFor: 'Varsity & JV National Championships 2026',
+    qualifiedDate: new Date('2026-03-15'),
+    qualifyingScore: 88,
+    used: true, // Already registered for event-003
+  },
+  {
+    id: 'qual-002',
+    studentId: 'student-003',
+    competitionType: 'history-bee',
+    qualifiedFor: 'Middle & Elementary National Championships 2027',
+    qualifiedDate: new Date('2026-03-20'),
+    qualifyingScore: 92,
+    used: true, // Already registered for event-006
+  },
+  {
+    id: 'qual-003',
+    studentId: 'student-002',
+    competitionType: 'history-bowl',
+    qualifiedFor: 'International Geography Championships 2026',
+    qualifiedDate: new Date('2026-04-26'),
+    qualifyingScore: 95,
+    used: false,
+  },
+  {
+    id: 'qual-004',
+    studentId: 'student-005',
+    competitionType: 'science-bee',
+    qualifiedFor: 'Varsity & JV National Championships 2026',
+    qualifiedDate: new Date('2026-03-28'),
+    qualifyingScore: 90,
+    used: false,
+  },
+];
+
+// Mock results (historical data from past competitions)
+export const mockResults: Result[] = [
+  {
+    id: 'result-001',
+    studentId: 'student-002',
+    eventId: 'event-past-001',
+    placement: 3,
+    score: 88,
+    medals: 'Bronze',
+    qualified: true,
+  },
+  {
+    id: 'result-002',
+    studentId: 'student-002',
+    eventId: 'event-past-002',
+    placement: 1,
+    score: 95,
+    medals: 'Gold',
+    qualified: true,
+  },
+  {
+    id: 'result-003',
+    studentId: 'student-003',
+    eventId: 'event-past-003',
+    placement: 2,
+    score: 92,
+    medals: 'Silver',
+    qualified: true,
+  },
+  {
+    id: 'result-004',
+    studentId: 'student-001',
+    eventId: 'event-past-004',
+    placement: 5,
+    score: 85,
+    medals: undefined,
+    qualified: true,
+  },
+  {
+    id: 'result-005',
+    studentId: 'student-005',
+    eventId: 'event-past-005',
+    placement: 4,
+    score: 90,
+    medals: undefined,
+    qualified: true,
+  },
+];
+
+// Helper functions for demo authentication
+export const authenticateUser = (email: string): User | null => {
+  return mockUsers.find(user => user.email === email) || null;
+};
+
+export const getStudentsByParent = (parentId: string): Student[] => {
+  return mockStudents.filter(student => student.parentId === parentId);
+};
+
+export const getRegistrationsByStudent = (studentId: string): Registration[] => {
+  return mockRegistrations.filter(reg => reg.studentId === studentId);
+};
+
+export const getQualificationsByStudent = (studentId: string): Qualification[] => {
+  return mockQualifications.filter(qual => qual.studentId === studentId);
+};
+
+export const getResultsByStudent = (studentId: string): Result[] => {
+  return mockResults.filter(result => result.studentId === studentId);
+};

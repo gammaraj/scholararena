@@ -1,9 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Trophy, Users, Globe, BookOpen, Beaker, MapPin } from "lucide-react"
-import Link from "next/link"
+import { Users, Globe, BookOpen, Beaker, MapPin } from "lucide-react"
 
 const subjects = [
   { icon: BookOpen, label: "History Bee", color: "bg-primary" },
@@ -17,15 +15,6 @@ export function Hero() {
     <section className="relative overflow-hidden bg-white py-20 lg:py-28">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-5xl text-center">
-          {/* Announcement banner */}
-          <Link href="https://brakto.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mb-8 group">
-            <Badge variant="outline" className="px-4 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground hover:border-primary/50 transition-all">
-              <span className="mr-2">🚀</span>
-              Coming Soon - Built on Brakto's Proven Infrastructure
-              <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-            </Badge>
-          </Link>
-
           {/* Main headline */}
           <h1 className="text-balance text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-foreground">
             <span className="block">Competition Management</span>
@@ -47,7 +36,6 @@ export function Hero() {
               Join the Waitlist
             </Button>
             <Button size="lg" variant="outline" className="gap-2 text-base px-8 py-6 font-semibold border-2">
-              <Trophy className="h-5 w-5" />
               Learn More
             </Button>
           </div>
