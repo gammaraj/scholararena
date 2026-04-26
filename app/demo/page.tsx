@@ -76,7 +76,7 @@ export default function DemoLoginPage() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-sm font-semibold text-slate-700 mb-1">287/500</div>
+                <div className="text-sm font-semibold text-slate-700 mb-1">498/500</div>
                   <div className="text-xs text-slate-500">Registered</div>
                 </div>
               </div>

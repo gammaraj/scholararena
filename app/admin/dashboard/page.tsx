@@ -42,8 +42,9 @@ export default function AdminDashboard() {
     });
   };
 
-  const totalRegistrations = registrations.length;
-  const totalRevenue = registrations.reduce((sum, reg) => sum + reg.event.registrationFee, 0);
+  // Calculate totals across all events for realistic revenue display
+  const totalRegistrations = events.reduce((sum, event) => sum + event.currentRegistrations, 0);
+  const totalRevenue = events.reduce((sum, event) => sum + (event.currentRegistrations * event.registrationFee), 0);
   const paidRegistrations = registrations.filter(r => r.paymentStatus === 'paid').length;
   const qualifiedStudents = mockQualifications.filter(q => !q.used).length;
 

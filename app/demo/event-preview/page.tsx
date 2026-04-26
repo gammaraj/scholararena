@@ -14,7 +14,7 @@ const DEMO_EVENT = {
   date: 'November 15, 2026',
   fee: 130,
   capacity: 500,
-  registered: 287,
+  registered: 498,
   description: 'Our biggest competition! Register for 1, 2, or all 3 Bees. Choose from 12 written exams. Compete up to 4 times with different question sets. Top 1/2 qualify for Nationals, Top 1/3 qualify for Internationals.',
 };
 
