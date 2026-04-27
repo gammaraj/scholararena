@@ -12,9 +12,11 @@ ScholarArena is optimized for search engines, answer engines, and large language
 
 ### 2. `/public/sitemap.xml`
 - Lists all site pages with priority and change frequency
-- Updated: 2026-04-24
+- Updated: 2026-04-26
 - Homepage priority: 1.0
 - Feature sections priority: 0.8-0.7
+- Includes all portal routes (parent, student, teacher, admin)
+- Demo pages included for discoverability
 
 ### 3. `/app/layout.tsx` - Enhanced Metadata
 **Added:**
