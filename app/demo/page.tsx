@@ -92,6 +92,38 @@ export default function DemoLoginPage() {
           </Card>
         </div>
 
+        {/* COPPA POC Highlight */}
+        <div className="mb-6">
+          <Card className="p-6 bg-gradient-to-r from-amber-50 to-blue-50 border-2 border-amber-200 hover:border-amber-300 transition-all cursor-pointer group">
+            <Link href="/demo/coppa" className="block">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">🛡️</span>
+                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors">
+                      Try COPPA Compliance POC →
+                    </h3>
+                  </div>
+                  <p className="text-sm text-slate-600 mb-2">
+                    Interactive parent-consent workflow with age-band logic (Under 13, 13-17, 18+).
+                  </p>
+                  <div className="flex flex-wrap gap-2 text-xs">
+                    <span className="bg-amber-100 text-amber-900 px-2 py-1 rounded border border-amber-300">
+                      ✓ Under-13 verifiable consent
+                    </span>
+                    <span className="bg-blue-100 text-blue-900 px-2 py-1 rounded border border-blue-300">
+                      ✓ 13-17 parental tracking
+                    </span>
+                    <span className="bg-emerald-100 text-emerald-900 px-2 py-1 rounded border border-emerald-300">
+                      ✓ Audit payload preview
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </Card>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {demoAccounts.map((account) => (
             <Card key={account.email} className="p-6 hover:shadow-lg transition-shadow border-2 hover:border-primary">
