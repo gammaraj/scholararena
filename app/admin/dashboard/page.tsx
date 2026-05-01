@@ -6,7 +6,8 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { mockEvents, mockRegistrations, mockStudents, mockQualifications } from '@/lib/mockData';
+import { getAllRegistrations, mockEvents, mockQualifications } from '@/lib/mockData';
+import { getCoppaBandLabel } from '@/lib/coppa';
 import { Event, Registration } from '@/lib/types';
 
 export default function AdminDashboard() {
@@ -23,7 +24,7 @@ export default function AdminDashboard() {
     }
 
     setEvents(mockEvents);
-    setRegistrations(mockRegistrations);
+    setRegistrations(getAllRegistrations());
     if (mockEvents.length > 0) {
       setSelectedEvent(mockEvents[0].id);
     }
@@ -42,11 +43,13 @@ export default function AdminDashboard() {
     });
   };
 
-  // Calculate totals across all events for realistic revenue display
-  const totalRegistrations = events.reduce((sum, event) => sum + event.currentRegistrations, 0);
-  const totalRevenue = events.reduce((sum, event) => sum + (event.currentRegistrations * event.registrationFee), 0);
+  // Summary values are based on persisted registrations so new records appear immediately.
+  const totalRegistrations = registrations.length;
+  const totalRevenue = registrations.reduce((sum, registration) => sum + registration.event.registrationFee, 0);
   const paidRegistrations = registrations.filter(r => r.paymentStatus === 'paid').length;
   const qualifiedStudents = mockQualifications.filter(q => !q.used).length;
+  const coppaUnder13 = registrations.filter(r => r.coppaConsent?.studentAgeBand === 'under-13').length;
+  const coppaTeenTracked = registrations.filter(r => r.coppaConsent?.studentAgeBand === '13-17').length;
 
   const selectedEventData = events.find(e => e.id === selectedEvent);
   const eventRegistrations = registrations.filter(r => r.eventId === selectedEvent);
@@ -101,7 +104,7 @@ export default function AdminDashboard() {
           <Card className="p-6 bg-card border-border">
             <div className="text-sm font-semibold text-primary mb-1">Qualified Students</div>
             <div className="text-3xl font-bold text-foreground">{qualifiedStudents}</div>
-            <div className="text-xs text-muted-foreground mt-1">Awaiting registration</div>
+            <div className="text-xs text-muted-foreground mt-1">U13: {coppaUnder13} • 13-17 tracked: {coppaTeenTracked}</div>
           </Card>
         </div>
 
@@ -238,6 +241,7 @@ export default function AdminDashboard() {
                             <th className="pb-2 font-semibold text-slate-700">Grade</th>
                             <th className="pb-2 font-semibold text-slate-700">School</th>
                             <th className="pb-2 font-semibold text-slate-700">Options</th>
+                            <th className="pb-2 font-semibold text-slate-700">COPPA</th>
                             <th className="pb-2 font-semibold text-slate-700">Status</th>
                             <th className="pb-2 font-semibold text-slate-700">Payment</th>
                             <th className="pb-2 font-semibold text-slate-700">Check-in</th>
@@ -247,7 +251,6 @@ export default function AdminDashboard() {
                         <tbody>
                           {eventRegistrations.map(reg => {
                             const student = reg.student;
-                            const school = student.schoolId ? mockStudents.find(s => s.schoolId === student.schoolId) : null;
                             
                             return (
                               <tr key={reg.id} className="border-b border-slate-100">
@@ -280,6 +283,20 @@ export default function AdminDashboard() {
                                     </div>
                                   ) : (
                                     <span className="text-xs text-slate-500">Standard</span>
+                                  )}
+                                </td>
+                                <td className="py-3">
+                                  {reg.coppaConsent ? (
+                                    <div className="space-y-1">
+                                      <Badge className="text-xs bg-indigo-100 text-indigo-900 border-indigo-300">
+                                        {getCoppaBandLabel(reg.coppaConsent.studentAgeBand)}
+                                      </Badge>
+                                      <div className="text-xs text-slate-600">
+                                        {reg.coppaConsent.required ? 'Verified consent' : reg.coppaConsent.parentalTrackingRequired ? 'Tracking logged' : 'Not required'}
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    <span className="text-xs text-slate-500">No record</span>
                                   )}
                                 </td>
                                 <td className="py-3">

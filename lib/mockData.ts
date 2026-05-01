@@ -1,5 +1,7 @@
 import { User, Student, School, Event, Registration, Qualification, Result } from './types';
 
+const REGISTRATION_STORAGE_KEY = 'scholararena-registrations';
+
 // Mock users for demo
 export const mockUsers: User[] = [
   {
@@ -637,8 +639,122 @@ export const getStudentsByParent = (parentId: string): Student[] => {
   return mockStudents.filter(student => student.parentId === parentId);
 };
 
+const reviveRegistration = (registration: Registration): Registration => {
+  const revived: Registration = {
+    ...registration,
+    registeredAt: new Date(registration.registeredAt),
+    student: {
+      ...registration.student,
+      dateOfBirth: new Date(registration.student.dateOfBirth),
+      createdAt: new Date(registration.student.createdAt),
+    },
+    event: {
+      ...registration.event,
+      date: new Date(registration.event.date),
+      registrationDeadline: new Date(registration.event.registrationDeadline),
+    },
+  };
+
+  if (registration.coppaConsent) {
+    revived.coppaConsent = {
+      ...registration.coppaConsent,
+      grantedAt: new Date(registration.coppaConsent.grantedAt),
+    };
+  }
+
+  return revived;
+};
+
+const hasWindow = () => typeof window !== 'undefined';
+
+const saveRegistrations = (registrations: Registration[]) => {
+  if (!hasWindow()) {
+    return;
+  }
+
+  localStorage.setItem(REGISTRATION_STORAGE_KEY, JSON.stringify(registrations));
+};
+
+export const getAllRegistrations = (): Registration[] => {
+  if (!hasWindow()) {
+    return mockRegistrations.map(reviveRegistration);
+  }
+
+  const stored = localStorage.getItem(REGISTRATION_STORAGE_KEY);
+  if (!stored) {
+    const seedRegistrations = mockRegistrations.map(reviveRegistration);
+    saveRegistrations(seedRegistrations);
+    return seedRegistrations;
+  }
+
+  try {
+    const parsed = JSON.parse(stored) as Registration[];
+    return parsed.map(reviveRegistration);
+  } catch {
+    const seedRegistrations = mockRegistrations.map(reviveRegistration);
+    saveRegistrations(seedRegistrations);
+    return seedRegistrations;
+  }
+};
+
+export const getRegistrationById = (registrationId: string): Registration | null => {
+  return getAllRegistrations().find((registration) => registration.id === registrationId) ?? null;
+};
+
+export interface CreateRegistrationInput {
+  studentId: string;
+  eventId: string;
+  registeredBy: string;
+  selectedBees?: ('science' | 'history' | 'geography')[];
+  selectedExams?: string[];
+  selectedQuestionSet?: Event['questionSet'];
+  coppaConsent?: Registration['coppaConsent'];
+}
+
+export const createRegistration = (input: CreateRegistrationInput): Registration => {
+  const student = mockStudents.find((entry) => entry.id === input.studentId);
+  const event = mockEvents.find((entry) => entry.id === input.eventId);
+
+  if (!student || !event) {
+    throw new Error('Could not create registration because student or event was not found.');
+  }
+
+  const status = event.status === 'waitlist' ? 'waitlist' : 'confirmed';
+  const registration: Registration = {
+    id: `reg-local-${Date.now()}`,
+    studentId: student.id,
+    student,
+    eventId: event.id,
+    event,
+    registeredBy: input.registeredBy,
+    registeredAt: new Date(),
+    status,
+    paymentStatus: 'pending',
+    checkInStatus: 'not-checked-in',
+    qrCode: `QR-${event.id.toUpperCase()}-${student.id.toUpperCase()}-${Date.now()}`,
+    selectedBees: input.selectedBees,
+    selectedExams: input.selectedExams,
+    selectedQuestionSet: input.selectedQuestionSet,
+    coppaConsent: input.coppaConsent,
+  };
+
+  const registrations = getAllRegistrations();
+  registrations.unshift(registration);
+  saveRegistrations(registrations);
+  return registration;
+};
+
 export const getRegistrationsByStudent = (studentId: string): Registration[] => {
-  return mockRegistrations.filter(reg => reg.studentId === studentId);
+  return getAllRegistrations().filter(reg => reg.studentId === studentId);
+};
+
+export const getRegistrationsByEvent = (eventId: string): Registration[] => {
+  return getAllRegistrations().filter(reg => reg.eventId === eventId);
+};
+
+export const getRegistrationsByParent = (parentId: string): Registration[] => {
+  const childIds = getStudentsByParent(parentId).map((student) => student.id);
+  return getAllRegistrations().filter((registration) => childIds.includes(registration.studentId));
 };
 
 export const getQualificationsByStudent = (studentId: string): Qualification[] => {

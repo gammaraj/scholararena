@@ -6,7 +6,7 @@ import { useAuth } from '@/lib/auth-context';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { mockStudents, mockEvents, mockSchools, mockRegistrations } from '@/lib/mockData';
+import { getAllRegistrations, mockStudents, mockEvents, mockSchools } from '@/lib/mockData';
 import { Student, Event, School, Registration } from '@/lib/types';
 
 export default function TeacherDashboard() {
@@ -34,7 +34,7 @@ export default function TeacherDashboard() {
       
       // Get registrations for these students
       const studentIds = schoolStudents.map(s => s.id);
-      const schoolRegs = mockRegistrations.filter(r => studentIds.includes(r.studentId));
+      const schoolRegs = getAllRegistrations().filter(r => studentIds.includes(r.studentId));
       setRegistrations(schoolRegs);
     }
 

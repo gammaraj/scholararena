@@ -63,6 +63,26 @@ export type Division =
   | 'Grade 4 and Under'
   | 'Elementary';
 
+export type CoppaVerificationMethod =
+  | 'credit-card'
+  | 'government-id'
+  | 'signed-form'
+  | 'knowledge-based';
+
+export type CoppaAgeBand = 'under-13' | '13-17' | '18-plus';
+
+export interface CoppaConsentRecord {
+  required: boolean;
+  parentalTrackingRequired: boolean;
+  granted: boolean;
+  trackingAcknowledged: boolean;
+  studentAge: number;
+  studentAgeBand: CoppaAgeBand;
+  grantedAt: Date;
+  verifiedBy?: CoppaVerificationMethod;
+  consentTextVersion: string;
+}
+
 // Event/Competition
 export interface Event {
   id: string;
@@ -104,6 +124,7 @@ export interface Registration {
   selectedBees?: ('science' | 'history' | 'geography')[];
   selectedExams?: string[];
   selectedQuestionSet?: QuestionSet;
+  coppaConsent?: CoppaConsentRecord;
 }
 
 // Qualification record

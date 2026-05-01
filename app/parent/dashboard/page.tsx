@@ -6,7 +6,8 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { mockStudents, mockRegistrations, mockQualifications, getStudentsByParent } from '@/lib/mockData';
+import { getRegistrationsByParent, getStudentsByParent, mockQualifications } from '@/lib/mockData';
+import { getCoppaBandLabel } from '@/lib/coppa';
 import { Student, Registration, Qualification } from '@/lib/types';
 
 export default function ParentDashboard() {
@@ -28,9 +29,7 @@ export default function ParentDashboard() {
 
     // Load all registrations for these children
     const childIds = parentChildren.map(c => c.id);
-    const childRegistrations = mockRegistrations.filter(reg => 
-      childIds.includes(reg.studentId)
-    );
+    const childRegistrations = getRegistrationsByParent(user.id);
     setRegistrations(childRegistrations);
 
     // Load qualifications
@@ -199,7 +198,17 @@ export default function ParentDashboard() {
                                   <Badge variant="outline" className="text-xs">
                                     {reg.selectedQuestionSet || reg.event.questionSet} Set
                                   </Badge>
+                                  {reg.coppaConsent && (
+                                    <Badge className="text-xs bg-indigo-100 text-indigo-900 border-indigo-300">
+                                      {getCoppaBandLabel(reg.coppaConsent.studentAgeBand)}
+                                    </Badge>
+                                  )}
                                 </div>
+                                {reg.coppaConsent && (
+                                  <div className="mt-2 text-xs text-slate-600">
+                                    Consent: {reg.coppaConsent.required ? 'Verified' : 'Tracking'} • Version {reg.coppaConsent.consentTextVersion}
+                                  </div>
+                                )}
                               </div>
                             </div>
                             <div className="text-right space-y-2">
@@ -238,6 +247,16 @@ export default function ParentDashboard() {
                             <Button size="sm" variant="outline" className="text-xs text-slate-600">
                               QR Code
                             </Button>
+                            {reg.coppaConsent && (
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="text-xs"
+                                onClick={() => router.push(`/parent/register/receipt/${reg.id}`)}
+                              >
+                                Consent Receipt
+                              </Button>
+                            )}
                           </div>
                         </div>
                       ))}

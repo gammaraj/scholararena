@@ -6,8 +6,15 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { mockEvents, mockStudents, getStudentsByParent } from '@/lib/mockData';
-import { Event, Student } from '@/lib/types';
+import { createRegistration, getStudentsByParent, mockEvents } from '@/lib/mockData';
+import {
+  COPPA_CONSENT_TEXT_VERSION,
+  getCoppaAgeBand,
+  getCoppaBandLabel,
+  getCoppaPolicySummary,
+  getStudentAge,
+} from '@/lib/coppa';
+import { CoppaVerificationMethod, Event, Student } from '@/lib/types';
 
 export default function ParentRegisterPage() {
   const { user } = useAuth();
@@ -16,6 +23,10 @@ export default function ParentRegisterPage() {
   const [children, setChildren] = useState<Student[]>([]);
   const [selectedChild, setSelectedChild] = useState<string>('');
   const [selectedEvent, setSelectedEvent] = useState<string>('');
+  const [confirmGuardian, setConfirmGuardian] = useState(false);
+  const [confirmDataUse, setConfirmDataUse] = useState(false);
+  const [confirmTeenTracking, setConfirmTeenTracking] = useState(false);
+  const [verificationMethod, setVerificationMethod] = useState<CoppaVerificationMethod>('credit-card');
 
   useEffect(() => {
     if (!user || user.role !== 'parent') {
@@ -36,10 +47,50 @@ export default function ParentRegisterPage() {
       alert('Please select both a child and an event');
       return;
     }
-    
-    // In a real app, this would create a registration
-    alert(`Registration created! This would process payment and send confirmation email.`);
-    router.push('/parent/dashboard');
+
+    if (coppaAgeBand === 'under-13' && (!confirmGuardian || !confirmDataUse)) {
+      alert('COPPA consent is required. Please complete both parent consent confirmations.');
+      return;
+    }
+
+    if (coppaAgeBand === '13-17' && !confirmTeenTracking) {
+      alert('Parental authorization tracking is required for age 13-17 students.');
+      return;
+    }
+
+    const studentAge = selectedChildAge ?? 0;
+    const coppaConsent = {
+      required: coppaAgeBand === 'under-13',
+      parentalTrackingRequired: coppaAgeBand === '13-17',
+      granted: coppaAgeBand === 'under-13' ? confirmGuardian && confirmDataUse : false,
+      trackingAcknowledged: coppaAgeBand === '13-17' ? confirmTeenTracking : false,
+      studentAge,
+      studentAgeBand: coppaAgeBand,
+      grantedAt: new Date(),
+      verifiedBy: coppaAgeBand === 'under-13' ? verificationMethod : undefined,
+      consentTextVersion: COPPA_CONSENT_TEXT_VERSION,
+    };
+
+    const registrationAuditPreview = {
+      studentId: selectedChild,
+      eventId: selectedEvent,
+      coppaConsent,
+    };
+    console.log('Registration payload preview:', registrationAuditPreview);
+
+    try {
+      const registration = createRegistration({
+        studentId: selectedChild,
+        eventId: selectedEvent,
+        registeredBy: user?.id ?? 'parent-unknown',
+        coppaConsent,
+      });
+
+      router.push(`/parent/register/receipt/${registration.id}`);
+    } catch (error) {
+      console.error(error);
+      alert('Unable to create registration. Please try again.');
+    }
   };
 
   const formatDate = (date: Date) => {
@@ -49,6 +100,16 @@ export default function ParentRegisterPage() {
       day: 'numeric' 
     });
   };
+
+  const selectedChildProfile = children.find((child) => child.id === selectedChild);
+  const selectedChildAge = selectedChildProfile ? getStudentAge(selectedChildProfile.dateOfBirth) : null;
+  const coppaAgeBand = selectedChildAge !== null ? getCoppaAgeBand(selectedChildAge) : null;
+
+  useEffect(() => {
+    setConfirmGuardian(false);
+    setConfirmDataUse(false);
+    setConfirmTeenTracking(false);
+  }, [selectedChild]);
 
   const getStatusBadge = (event: Event) => {
     if (event.status === 'waitlist') {
@@ -102,7 +163,97 @@ export default function ParentRegisterPage() {
                     </option>
                   ))}
                 </select>
+                {selectedChildProfile && (
+                  <p className="mt-2 text-xs text-slate-600">
+                    Age: {selectedChildAge} • DOB: {formatDate(selectedChildProfile.dateOfBirth)}
+                  </p>
+                )}
               </div>
+
+              {selectedChildProfile && (
+                <div className="mb-6 rounded-lg border border-slate-200 bg-white p-4">
+                  <div className="mb-2 text-sm font-semibold text-slate-900">COPPA Compliance</div>
+                  {coppaAgeBand === 'under-13' ? (
+                    <>
+                      <Badge className="mb-3 bg-amber-100 text-amber-900 border-amber-300">Under 13 - Consent Required</Badge>
+                      <div className="space-y-3 text-xs text-slate-700">
+                        <p>{getCoppaPolicySummary('under-13')}</p>
+                        <label className="flex items-start gap-2">
+                          <input
+                            type="checkbox"
+                            checked={confirmGuardian}
+                            onChange={(e) => setConfirmGuardian(e.target.checked)}
+                            className="mt-0.5 h-4 w-4"
+                          />
+                          <span>
+                            I confirm I am the parent/legal guardian and authorize registration for this child.
+                          </span>
+                        </label>
+                        <label className="flex items-start gap-2">
+                          <input
+                            type="checkbox"
+                            checked={confirmDataUse}
+                            onChange={(e) => setConfirmDataUse(e.target.checked)}
+                            className="mt-0.5 h-4 w-4"
+                          />
+                          <span>
+                            I consent to the collection and use of my child&apos;s data for event operations, communication, and safety.
+                          </span>
+                        </label>
+                        <div>
+                          <label className="mb-1 block font-semibold text-slate-700">Verification Method</label>
+                          <select
+                            value={verificationMethod}
+                            onChange={(e) => setVerificationMethod(e.target.value as CoppaVerificationMethod)}
+                            className="w-full border border-slate-300 rounded-lg p-2 text-xs"
+                          >
+                            <option value="credit-card">Payment Method Verification</option>
+                            <option value="government-id">Government ID Verification</option>
+                            <option value="signed-form">Signed Consent Form</option>
+                            <option value="knowledge-based">Knowledge-Based Verification</option>
+                          </select>
+                        </div>
+                        <p className="text-slate-500">
+                          Policy version: {COPPA_CONSENT_TEXT_VERSION}
+                        </p>
+                      </div>
+                    </>
+                  ) : coppaAgeBand === '13-17' ? (
+                    <>
+                      <Badge className="mb-3 bg-blue-100 text-blue-900 border-blue-300">Age 13-17 - Parent Tracking Required</Badge>
+                      <div className="space-y-3 text-xs text-slate-700">
+                        <p>{getCoppaPolicySummary('13-17')}</p>
+                        <label className="flex items-start gap-2">
+                          <input
+                            type="checkbox"
+                            checked={confirmTeenTracking}
+                            onChange={(e) => setConfirmTeenTracking(e.target.checked)}
+                            className="mt-0.5 h-4 w-4"
+                          />
+                          <span>
+                            I confirm parental authorization/awareness tracking for this 13-17 student and agree to retain this record for compliance review.
+                          </span>
+                        </label>
+                        <p className="text-slate-500">
+                          Policy version: {COPPA_CONSENT_TEXT_VERSION}
+                        </p>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="text-xs text-slate-700">
+                      <Badge className="mb-2 bg-emerald-100 text-emerald-900 border-emerald-300">Age 18+ - COPPA Consent Not Required</Badge>
+                      <p>
+                        {getCoppaPolicySummary('18-plus')}
+                      </p>
+                    </div>
+                  )}
+                  {coppaAgeBand && (
+                    <p className="mt-2 text-xs text-slate-500">
+                      Age band: {getCoppaBandLabel(coppaAgeBand)}
+                    </p>
+                  )}
+                </div>
+              )}
 
               {/* Event Selection Summary */}
               {selectedEvent && (
@@ -116,10 +267,19 @@ export default function ParentRegisterPage() {
 
               <Button 
                 onClick={handleRegister}
-                disabled={!selectedChild || !selectedEvent}
+                disabled={
+                  !selectedChild ||
+                  !selectedEvent ||
+                  (coppaAgeBand === 'under-13' && (!confirmGuardian || !confirmDataUse)) ||
+                  (coppaAgeBand === '13-17' && !confirmTeenTracking)
+                }
                 className="w-full bg-primary hover:bg-primary/90"
               >
-                Complete Registration
+                {coppaAgeBand === 'under-13'
+                  ? 'Complete Registration with Verified Consent'
+                  : coppaAgeBand === '13-17'
+                    ? 'Complete Registration with Parent Tracking'
+                    : 'Complete Registration'}
               </Button>
 
               <p className="text-xs text-slate-500 mt-3 text-center">
