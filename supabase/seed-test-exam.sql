@@ -69,4 +69,14 @@ INSERT INTO questions (exam_id, position, prompt, image_url, option_a, option_b,
  'The Aztecs', 'The Maya', 'The Inca', 'The Olmecs',
  'c');
 
+-- 4. Assign topics
+UPDATE questions SET topic = CASE position
+  WHEN 1 THEN 'World History'    -- Julius Caesar / Roman Empire
+  WHEN 2 THEN 'World History'    -- Christopher Columbus
+  WHEN 3 THEN 'Ancient History'  -- Lighthouse of Alexandria
+  WHEN 4 THEN 'European History' -- Magna Carta
+  WHEN 5 THEN 'World History'    -- Inca / Machu Picchu
+END
+WHERE exam_id = 'ee570001-1111-4000-8000-000000000001';
+
 END $$;

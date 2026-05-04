@@ -129,12 +129,20 @@ export interface SubmitExamPayload {
   answers: AnswerMap;  // full answer map sent on final submit as backup
 }
 
+/** Per-topic score breakdown returned after exam submission */
+export interface TopicBreakdown {
+  topic: string;
+  correct: number;
+  total: number;
+}
+
 /** Response from POST /api/exam/submit */
 export interface SubmitExamResponse {
   score: number;
   totalQuestions: number;
   passed: boolean;
   passThreshold: number;
+  topicBreakdown: TopicBreakdown[];
 }
 
 /** Exam window status */

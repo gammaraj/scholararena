@@ -384,4 +384,59 @@ INSERT INTO questions (exam_id, position, prompt, image_url, option_a, option_b,
 
 ON CONFLICT (exam_id, position) DO NOTHING;
 
+-- 3. Assign topics to each question
+UPDATE questions SET topic = CASE position
+  WHEN 1  THEN 'Biology'       -- Amphibian
+  WHEN 2  THEN 'Physics'       -- Temperature / Celsius
+  WHEN 3  THEN 'Astronomy'     -- Center of solar system
+  WHEN 4  THEN 'Biology'       -- Plant energy / photosynthesis
+  WHEN 5  THEN 'Biology'       -- Metamorphosis
+  WHEN 6  THEN 'Biology'       -- Bald Eagle / national bird
+  WHEN 7  THEN 'Biology'       -- Hearing / senses
+  WHEN 8  THEN 'Astronomy'     -- Apollo / Moon
+  WHEN 9  THEN 'Math'          -- Polygon
+  WHEN 10 THEN 'Earth Science' -- Paleontology / fossils
+  WHEN 11 THEN 'Biology'       -- DNA double-helix
+  WHEN 12 THEN 'Chemistry'     -- Chemical element / Oxygen
+  WHEN 13 THEN 'Astronomy'     -- Constellation
+  WHEN 14 THEN 'Math'          -- Prime numbers
+  WHEN 15 THEN 'Biology'       -- Invertebrate / Centipede
+  WHEN 16 THEN 'Biology'       -- Bone / Femur
+  WHEN 17 THEN 'Physics'       -- Graduated cylinder / Volume
+  WHEN 18 THEN 'Astronomy'     -- Mars / Red Planet
+  WHEN 19 THEN 'Math'          -- Triangle / three sides
+  WHEN 20 THEN 'Biology'       -- Ants / Formicidae
+  WHEN 21 THEN 'Biology'       -- Australia / Dingo & Kangaroo
+  WHEN 22 THEN 'Chemistry'     -- Mendeleev / Periodic table
+  WHEN 23 THEN 'Astronomy'     -- Hubble Telescope
+  WHEN 24 THEN 'Biology'       -- Lungs / Respiratory system
+  WHEN 25 THEN 'Earth Science' -- Volcano
+  WHEN 26 THEN 'Earth Science' -- High Pressure weather map
+  WHEN 27 THEN 'Chemistry'     -- Iron / Metal
+  WHEN 28 THEN 'Earth Science' -- Aurora borealis
+  WHEN 29 THEN 'Math'          -- Perimeter
+  WHEN 30 THEN 'Biology'       -- Platypus / Monotreme
+  WHEN 31 THEN 'Biology'       -- Chromosomes
+  WHEN 32 THEN 'Biology'       -- Pollen
+  WHEN 33 THEN 'Astronomy'     -- Big Dipper / constellation
+  WHEN 34 THEN 'Math'          -- Fractions / 50%
+  WHEN 35 THEN 'Earth Science' -- Coral bleaching / environment
+  WHEN 36 THEN 'Astronomy'     -- Halley's Comet
+  WHEN 37 THEN 'Chemistry'     -- Neon signs
+  WHEN 38 THEN 'Astronomy'     -- Red dwarf / star classification
+  WHEN 39 THEN 'Biology'       -- Whale (animal facts)
+  WHEN 40 THEN 'Earth Science' -- Earthquake / Seismograph
+  WHEN 41 THEN 'Biology'       -- Cells / Mitosis & Meiosis
+  WHEN 42 THEN 'Physics'       -- Melting / phase change
+  WHEN 43 THEN 'Astronomy'     -- Moon phases
+  WHEN 44 THEN 'Biology'       -- Darwin / Evolution
+  WHEN 45 THEN 'Earth Science' -- Tornado
+  WHEN 46 THEN 'Biology'       -- Digestive system
+  WHEN 47 THEN 'Earth Science' -- Rainforest / carbon storage
+  WHEN 48 THEN 'Physics'       -- Gravity
+  WHEN 49 THEN 'Biology'       -- Vitamin C / Orange
+  WHEN 50 THEN 'Biology'       -- Venus flytrap
+END
+WHERE exam_id = 'aaaaaaaa-0001-0000-0000-000000000001';
+
 END $$;

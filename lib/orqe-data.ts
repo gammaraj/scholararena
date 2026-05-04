@@ -278,7 +278,7 @@ export async function saveAnswer(params: {
 export async function submitExam(params: {
   sessionId: string;
   answers: AnswerMap;
-}): Promise<{ score: number; totalQuestions: number; passed: boolean; passThreshold: number }> {
+}): Promise<{ score: number; totalQuestions: number; passed: boolean; passThreshold: number; topicBreakdown: { topic: string; correct: number; total: number }[] }> {
   // 1. Get session + exam to validate it's not already submitted
   const session = await getSessionById(params.sessionId);
   if (!session) throw new Error('Session not found');
@@ -324,11 +324,27 @@ export async function submitExam(params: {
       [session.exam_id],
     );
 
+    const topicResult = await query<{ topic: string; correct: number; total: number }>(
+      `
+      select
+        q.topic,
+        count(*)::int as total,
+        count(case when sa.selected_option = q.correct_option then 1 end)::int as correct
+      from student_answers sa
+      join questions q on q.id = sa.question_id
+      where sa.session_id = $1 and q.topic is not null
+      group by q.topic
+      order by q.topic
+      `,
+      [params.sessionId],
+    );
+
     return {
       score: graded.score,
       totalQuestions: countResult.rows[0]?.total ?? 50,
       passed: graded.passed,
       passThreshold: Number(exam.pass_threshold),
+      topicBreakdown: topicResult.rows,
     };
   }
 
@@ -378,11 +394,31 @@ export async function submitExam(params: {
     .select('id', { count: 'exact', head: true })
     .eq('exam_id', session.exam_id);
 
+  // 6. Topic breakdown (join student_answers + questions via service role)
+  const { data: topicRows } = await admin
+    .from('student_answers')
+    .select('selected_option, questions!inner(topic, correct_option)')
+    .eq('session_id', params.sessionId)
+    .not('questions.topic', 'is', null);
+
+  const topicMap: Record<string, { correct: number; total: number }> = {};
+  for (const row of topicRows ?? []) {
+    const q = (row as any).questions;
+    if (!q?.topic) continue;
+    if (!topicMap[q.topic]) topicMap[q.topic] = { correct: 0, total: 0 };
+    topicMap[q.topic].total++;
+    if (row.selected_option === q.correct_option) topicMap[q.topic].correct++;
+  }
+  const topicBreakdown = Object.entries(topicMap)
+    .map(([topic, v]) => ({ topic, ...v }))
+    .sort((a, b) => a.topic.localeCompare(b.topic));
+
   return {
     score: gradeResult[0].score,
     totalQuestions: totalQuestions ?? 50,
     passed: gradeResult[0].passed,
     passThreshold: exam.pass_threshold,
+    topicBreakdown,
   };
 }
 

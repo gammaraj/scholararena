@@ -41,6 +41,7 @@ create table questions (
   option_c        text not null,
   option_d        text not null,
   correct_option  char(1) not null check (correct_option in ('a','b','c','d')),
+  topic           text,   -- e.g. 'Biology', 'Chemistry', 'Astronomy', 'Earth Science', 'Physics', 'Math'
   unique (exam_id, position)
 );
 

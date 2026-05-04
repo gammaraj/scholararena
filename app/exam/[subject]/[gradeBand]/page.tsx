@@ -132,6 +132,7 @@ function ExamContent() {
           totalQuestions: data.totalQuestions,
           passed: data.passed,
           passThreshold: data.passThreshold,
+          topicBreakdown: data.topicBreakdown ?? [],
         }),
       );
 
