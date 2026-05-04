@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -12,7 +12,7 @@ interface ResultData {
   passThreshold: number;
 }
 
-export default function FailPage() {
+function FailContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const sessionId = searchParams.get('session');
@@ -70,5 +70,13 @@ export default function FailPage() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+export default function FailPage() {
+  return (
+    <Suspense>
+      <FailContent />
+    </Suspense>
   );
 }

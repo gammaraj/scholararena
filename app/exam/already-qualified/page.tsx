@@ -1,12 +1,13 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { SUBJECT_LABELS } from '@/lib/orqe-types';
 import type { OrqeSubject } from '@/lib/orqe-types';
 
-export default function AlreadyQualifiedPage() {
+function AlreadyQualifiedContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const subject = (searchParams.get('subject') ?? 'science') as OrqeSubject;
@@ -44,5 +45,13 @@ export default function AlreadyQualifiedPage() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+export default function AlreadyQualifiedPage() {
+  return (
+    <Suspense>
+      <AlreadyQualifiedContent />
+    </Suspense>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { Suspense, useEffect, useRef, useState, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -28,6 +28,14 @@ interface StoredSession {
 }
 
 export default function ExamPage() {
+  return (
+    <Suspense>
+      <ExamContent />
+    </Suspense>
+  );
+}
+
+function ExamContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const sessionId = searchParams.get('session');
