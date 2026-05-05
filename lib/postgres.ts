@@ -3,7 +3,8 @@ import { Pool, QueryResult } from 'pg';
 let pool: Pool | null = null;
 
 function getConnectionString(): string {
-  const url = process.env.LOCAL_DATABASE_URL;
+  // Production (Vercel) uses DATABASE_URL; local dev uses LOCAL_DATABASE_URL
+  const url = process.env.DATABASE_URL || process.env.LOCAL_DATABASE_URL;
   if (url) return url;
 
   // Fallback for local default Postgres setup.
