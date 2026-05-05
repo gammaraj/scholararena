@@ -19,7 +19,11 @@ import type {
 } from './orqe-types';
 import { gradeToGradeBand } from './orqe-types';
 
-const useLocalPostgres = process.env.ORQE_DATA_BACKEND === 'local-postgres';
+// Use the postgres.ts backend whenever DATABASE_URL is set (production + local dev),
+// or when explicitly opted in via ORQE_DATA_BACKEND=local-postgres.
+const useLocalPostgres =
+  !!process.env.DATABASE_URL ||
+  process.env.ORQE_DATA_BACKEND === 'local-postgres';
 
 // ─── Exam availability ────────────────────────────────────────────────────────
 
