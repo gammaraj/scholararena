@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { setExamWindow } from '@/lib/orqe-data';
+import { requireAdminAuth } from '@/lib/admin-auth';
 
 const schema = z.object({
   examId: z.string().uuid(),
@@ -10,6 +11,9 @@ const schema = z.object({
 });
 
 export async function POST(req: NextRequest) {
+  const authError = requireAdminAuth(req);
+  if (authError) return authError;
+
   try {
     const body = await req.json();
     const parsed = schema.safeParse(body);

@@ -27,6 +27,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const login = (email: string): boolean => {
+    // Demo auth is disabled in production — only available in development
+    if (process.env.NODE_ENV === 'production') return false;
     const authenticatedUser = authenticateUser(email);
     if (authenticatedUser) {
       setUser(authenticatedUser);

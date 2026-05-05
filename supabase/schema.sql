@@ -92,17 +92,28 @@ create policy "public read questions for active exams"
 create policy "public insert session"
   on exam_sessions for insert with check (true);
 
--- Public: read any session (needed to show result page by session id)
+-- Public: read own session by id (result page)
 create policy "public read session"
   on exam_sessions for select using (true);
 
--- Public: update session (submit)
+-- Public: update session only to record submission (score/passed/submitted_at)
+-- Full session mutations use service role (bypasses RLS) in server-side routes.
 create policy "public update session"
-  on exam_sessions for update using (true);
+  on exam_sessions for update using (submitted_at is null)
+  with check (true);
 
--- Public: full access to student_answers (write as you go, read own)
-create policy "public manage answers"
-  on student_answers for all using (true);
+-- Public: insert answers only (no update/delete via anon key)
+create policy "public insert answers"
+  on student_answers for insert with check (true);
+
+-- Public: update own answers only while session is unsubmitted
+create policy "public update answers"
+  on student_answers for update
+  using (exists (
+    select 1 from exam_sessions es
+    where es.id = session_id and es.submitted_at is null
+  ))
+  with check (true);
 
 -- NOTE: Admin full access is via service role key (bypasses RLS) — used
 -- in server-side API routes only. Never expose service role key to client.
